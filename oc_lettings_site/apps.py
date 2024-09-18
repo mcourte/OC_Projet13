@@ -1,19 +1,18 @@
 """
-oc_lettings_site/apps.py
+Configuration de l'application 'oc_lettings_site'.
 
-Configuration for the 'oc_lettings_site' application.
-
-This module contains the configuration for the Django application
-'oc_lettings_site',which manages functionalities related to properties in
-the project.
+Ce module contient la configuration pour l'application Django
+'oc_lettings_site', qui gère les fonctionnalités liées aux propriétés
+dans le projet.
 """
+
 from django.apps import AppConfig
 
 
 class OCLettingsSiteConfig(AppConfig):
-    """Configuration class for the 'lettings' application.
+    """Classe de configuration pour l'application 'oc_lettings_site'.
 
-    This class configures the 'oc_lettings_site' application, which handles
-    functionalities related to properties in the Django project.
+    Cette classe configure l'application 'oc_lettings_site', qui gère
+    les fonctionnalités liées aux propriétés dans le projet Django.
     """
     name = 'oc_lettings_site'

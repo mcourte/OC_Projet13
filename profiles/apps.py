@@ -1,18 +1,16 @@
 """
-profiles/apps.py
+Configuration pour l'application 'profiles'.
 
-Configuration for the 'profiles' application.
-
-This module contains the configuration for the Django application 'profiles',
-which manages functionalities related to properties in the project.
+Ce module contient la configuration pour l'application Django 'profiles',
+qui gère les fonctionnalités liées aux profils dans le projet.
 """
 from django.apps import AppConfig
 
 
 class ProfilesConfig(AppConfig):
-    """Configuration class for the 'profiles' application.
+    """Classe de configuration pour l'application 'profiles'.
 
-    This class configures the 'profiles' application, which handles
-    functionalities related to properties in the Django project.
+    Cette classe configure l'application 'profiles', qui gère les
+    fonctionnalités liées aux profils dans le projet Django.
     """
     name = 'profiles'

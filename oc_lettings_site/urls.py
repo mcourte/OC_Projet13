@@ -1,24 +1,29 @@
 """
-oc_lettings_site/urls.py
+Module contenant les patterns d'URL pour l'application 'oc_lettings_site'.
 
-This module contains the URL patterns for the 'oc_lettings_site' application,
-mapping URL paths to their corresponding view functions.
-URL Patterns:
-    - '' : Maps to the index view, displaying the home page.
-    - 'lettings/' : Includes the URL patterns from the 'lettings' application.
-    - 'profiles/' : Includes the URL patterns from the 'profiles' application.
-    - 'admin/' : Maps to the Django admin interface.
+Ce module associe les chemins d'URL aux fonctions de vue correspondantes
+pour l'application 'oc_lettings_site'.
+
+Patterns d'URL :
+    - '' : Mappe à la vue d'index, affichant la page d'accueil.
+    - 'lettings/' : Inclut les patterns d'URL de l'application 'lettings'.
+    - 'profiles/' : Inclut les patterns d'URL de l'application 'profiles'.
+    - 'admin/' : Mappe à l'interface d'administration de Django.
+
+Gestionnaires d'erreurs :
+    - 404 : Vue pour la gestion des erreurs 404.
+    - 500 : Vue pour la gestion des erreurs 500.
 """
-from django.contrib import admin
-from django.urls import path, include
-from . import views
 
+from django.urls import path, include
+from oc_lettings_site import views
+from django.contrib import admin
 
 urlpatterns = [
     path("", views.index, name="index"),
-    path("lettings/", include("lettings.urls", namespace="lettings")),
-    path("profiles/", include("profiles.urls", namespace="profiles")),
-    path("admin/", admin.site.urls),
+    path('lettings/', include('lettings.urls')),
+    path('profiles/', include('profiles.urls')),
+    path('admin/', admin.site.urls),
     path("check_500/", views.error500, name="check_500"),
 ]
 handler404 = views.error404
