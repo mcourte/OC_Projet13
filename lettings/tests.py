@@ -1,7 +1,10 @@
-from django.test import TestCase
+from django.test import TestCase, RequestFactory
 from lettings.models import Address
 from django.urls import reverse
 from lettings.models import Letting
+from unittest.mock import patch, call
+from django.http import Http404
+from .views import letting
 
 
 class AddressModelTests(TestCase):
@@ -61,7 +64,8 @@ class LettingModelTests(TestCase):
 
     def setUp(self):
         """
-        Configuration des tests : Création d'un objet Address et d'un objet Letting pour les tests.
+        Configuration des tests : Création d'un objet Address
+        et d'un objet Letting pour les tests.
         """
         self.address = Address.objects.create(
             number=123,
@@ -97,7 +101,8 @@ class LettingViewTests(TestCase):
 
     def setUp(self):
         """
-        Configuration des tests : Création d'un objet Address et d'un objet Letting pour les tests.
+        Configuration des tests : Création d'un objet Address
+        et d'un objet Letting pour les tests.
         """
         self.address = Address.objects.create(
             number=123,
@@ -111,6 +116,7 @@ class LettingViewTests(TestCase):
             title='Test Letting',
             address=self.address
         )
+        self.factory = RequestFactory()
 
     def test_lettings_index_view(self):
         """
@@ -129,3 +135,26 @@ class LettingViewTests(TestCase):
         self.assertEqual(response.status_code, 200)
         self.assertTemplateUsed(response, 'lettings/letting.html')
         self.assertContains(response, 'Test Street')
+
+    @patch('lettings.views.Letting.objects.get')
+    @patch('lettings.views.sentry_log')
+    def test_value_error(self, mock_sentry_log, mock_get):
+        # Créer un objet de requête HTTP factice
+        request = self.factory.get('/letting/1')
+        # Simuler un utilisateur (peut être une instance de User si nécessaire)
+        request.user = None
+
+        # Simuler une ValueError
+        mock_get.side_effect = ValueError
+
+        # Exécuter la vue
+        with self.assertRaises(Http404):
+            letting(request, 'invalid_id')
+
+        # Vérifier que la méthode sentry_log a été appelée une fois avec le bon type et message
+        mock_sentry_log.assert_has_calls([
+            call(error_type="message",
+                 error_message="Requête de bien initiée par l'utilisateur : None"),
+            call(error_type="error",
+                 error_message="ValueError : un nombre est requis mais reçu : invalid_id")
+        ])
