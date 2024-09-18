@@ -1,6 +1,7 @@
 import os
 from dotenv import load_dotenv
 from pathlib import Path
+import sentry_sdk
 
 
 load_dotenv()
@@ -32,6 +33,7 @@ INSTALLED_APPS = [
     'django_extensions',
     'lettings',
     'profiles',
+
 ]
 
 MIDDLEWARE = [
@@ -54,7 +56,7 @@ TEMPLATES = [
             os.path.join(BASE_DIR, 'templates'),
             os.path.join(BASE_DIR, 'lettings', 'templates'),
             os.path.join(BASE_DIR, 'profiles', 'templates'),
-            ],
+        ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -131,15 +133,26 @@ USE_TZ = True
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATICFILES_DIRS = [BASE_DIR / "static",]
-STORAGES = {
-        "default": {
+STORAGES = {"default": {
             "BACKEND": "django.core.files.storage.FileSystemStorage",
-        },
-        "staticfiles": {
-            "BACKEND": "django.contrib.staticfiles.storage.StaticFilesStorage",
-        },
-}
+            },
+            "staticfiles": {
+            "BACKEND": "django.contrib.staticfiles.storage.StaticFilesStorage"},
+            }
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
-DEBUG = True
+
+sentry_sdk.init(
+    dsn=(
+        "https://f6be3c13cd21ef04ffeea33737e6bcf8"
+        "@o4507899769389056.ingest.de.sentry.io/4507973355044944"
+    ),
+    # Set traces_sample_rate to 1.0 to capture 100%
+    # of transactions for tracing.
+    traces_sample_rate=1.0,
+    # Set profiles_sample_rate to 1.0 to profile 100%
+    # of sampled transactions.
+    # We recommend adjusting this value in production.
+    profiles_sample_rate=1.0,
+)
