@@ -1,10 +1,10 @@
-from django.test import TestCase, RequestFactory
+from django.test import TestCase, RequestFactory, SimpleTestCase
 from lettings.models import Address
-from django.urls import reverse
+from django.urls import reverse, resolve
 from lettings.models import Letting
 from unittest.mock import patch, call
 from django.http import Http404
-from .views import letting
+from .views import letting, index
 
 
 class AddressModelTests(TestCase):
@@ -158,3 +158,14 @@ class LettingViewTests(TestCase):
             call(error_type="error",
                  error_message="ValueError : un nombre est requis mais reçu : invalid_id")
         ])
+
+
+class TestLettingsUrls(SimpleTestCase):
+
+    def test_lettings_index_url_is_resolved(self):
+        url = reverse('lettings:lettings_index')
+        self.assertEqual(resolve(url).func, index)
+
+    def test_letting_url_is_resolved(self):
+        url = reverse('lettings:letting', args=[1])
+        self.assertEqual(resolve(url).func, letting)
