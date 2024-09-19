@@ -1,10 +1,10 @@
 from django.contrib.auth.models import User
 from profiles.models import Profile
-from django.urls import reverse
-from django.test import TestCase, RequestFactory
+from django.urls import reverse, resolve
+from django.test import TestCase, RequestFactory, SimpleTestCase
 from unittest.mock import patch, call
 from django.http import Http404
-from .views import index
+from .views import index, profile
 
 
 class ProfileModelTests(TestCase):
@@ -79,3 +79,14 @@ class ProfileViewTests(TestCase):
                  " URL : /profiles, Méthode : GET, Adresse IP : 127.0.0.1"),
             call(error_type='message', error_message='Aucun profil trouvé.')
         ])
+
+
+class TestProfilesUrls(SimpleTestCase):
+
+    def test_profiles_index_url_is_resolved(self):
+        url = reverse('profiles:profiles_index')
+        self.assertEqual(resolve(url).func, index)
+
+    def test_profile_url_is_resolved(self):
+        url = reverse('profiles:profile', args=['username'])
+        self.assertEqual(resolve(url).func, profile)
