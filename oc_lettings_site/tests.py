@@ -1,9 +1,9 @@
 import os
 import sys
-from django.test import TestCase, override_settings, Client
-from django.urls import reverse
+from django.test import TestCase, override_settings, Client, SimpleTestCase
+from django.urls import reverse, resolve
 from unittest.mock import patch
-
+from .views import index, error500
 # Déterminez le chemin absolu du répertoire parent
 current_dir = os.path.dirname(__file__)
 parent_dir = os.path.abspath(os.path.join(current_dir, '../'))
@@ -88,3 +88,27 @@ class SentryLogTests(TestCase):
 
         # Vérifier que logging.exception a été appelé avec le bon message
         mock_logging_exception.assert_called_once_with("Test Exception Message")
+
+
+class TestOcLettingsSiteUrls(SimpleTestCase):
+
+    def test_index_url_is_resolved(self):
+        url = reverse('index')
+        self.assertEqual(resolve(url).func, index)
+
+    def test_lettings_url_is_included(self):
+        url = reverse('lettings:lettings_index')
+        self.assertEqual(resolve(url).namespace, 'lettings')
+
+    def test_profiles_url_is_included(self):
+        url = reverse('profiles:profiles_index')
+        self.assertEqual(resolve(url).namespace, 'profiles')
+
+    def test_admin_url_is_resolved(self):
+        client = Client()
+        response = client.get('admin/')
+        self.assertEqual(response.status_code, 200)
+
+    def test_check_500_url_is_resolved(self):
+        url = reverse('check_500')
+        self.assertEqual(resolve(url).func, error500)
