@@ -10,10 +10,11 @@ jobs:
       - image: cimg/python:3.8-node
     steps:
       - checkout
-      - python/install-packages
+      - python/install-packages:
+          pkg-manager: pip
       - run:
           name: Run tests
-          command: python manage.py test
+          command: python -m pytest
   deploy:
     # This is an example deploy job, not actually used by the workflow
     docker:
