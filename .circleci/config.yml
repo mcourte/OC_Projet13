@@ -1,11 +1,11 @@
-# This config was automatically generated from your source code
-# Stacks detected: deps:python:.,file:manage.py:.
 version: 2.1
 orbs:
   python: circleci/python@2
 
 jobs:
   test-python:
+    docker:  # Ajout d'un environnement Docker
+      - image: circleci/python:3.12  # Vous pouvez ajuster la version de Python si nécessaire
     steps:
       - checkout
       - run:
@@ -22,4 +22,5 @@ workflows:
   build-and-test:
     jobs:
       - test-python
+
 
