@@ -3,32 +3,21 @@
 version: 2.1
 orbs:
   python: circleci/python@2
-  jobs:
-    test-python:
-      docker:
-        - image: cimg/python:3.12
-      steps:
-        - checkout
-        - run:
-            name: Install dependencies
-            command: pip install -r requirements.txt
-        - run:
-            name: Run tests
-            command: python -m pytest
 
-  deploy:
-    # This is an example deploy job, not actually used by the workflow
+jobs:
+  test-python:
     docker:
-      - image: cimg/base:stable
+      - image: cimg/python:3.12
     steps:
-      # Replace this with steps to deploy to users
+      - checkout
       - run:
-          name: deploy
-          command: '#e.g. ./deploy.sh'
+          name: Installer les dépendances
+          command: pip install -r requirements.txt
+      - run:
+          name: Exécuter les tests
+          command: python -m pytest
 workflows:
   build-and-test:
     jobs:
       - test-python
-    # - deploy:
-    #     requires:
-    #       - test-python
+
