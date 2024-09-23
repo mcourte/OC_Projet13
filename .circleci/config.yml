@@ -4,18 +4,23 @@ version: 2.1
 orbs:
   python: circleci/python@2
 
+version: 2.1
 jobs:
   test-python:
     docker:
-      - image: cimg/python:3.12
+      - image: circleci/python:3.12
     steps:
       - checkout
       - run:
-          name: Installer les dépendances
+          name: Clear pip cache
+          command: pip cache purge
+      - run:
+          name: Install dependencies
           command: pip install -r requirements.txt
       - run:
-          name: Exécuter les tests
-          command: python -m pytest
+          name: Run tests
+          command: pytest
+        
 workflows:
   build-and-test:
     jobs:
