@@ -39,9 +39,9 @@ jobs:
             docker push $DOCKERHUB_USERNAME/my-app:latest
 
 workflows:
-  build_test_deploy:
+  build-and-test:
     jobs:
-      - build_and_test
+      - test-python
       - build_docker_image:
           requires:
             - build_and_test
