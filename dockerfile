@@ -1,14 +1,20 @@
-FROM python:3.12
-ENV PYTHONUNBUFFERED  1 \
-    PYTHONDONTWRITEBYTECODE 1 \
-    PIP_NO_PROGRESS_BAR=off
+# Utilise une image Python officielle
+FROM python:3.10-slim
+
+# Définir le répertoire de travail dans le conteneur
 WORKDIR /app
 
-COPY requirements.txt .
+# Copier les fichiers requirements
+COPY requirements.txt /app/
 
+# Installer les dépendances
+RUN pip install --no-cache-dir -r requirements.txt
 
-RUN pip install -r requirements.txt --progress-bar off
+# Copier tout le code source de l'application dans le conteneur
+COPY . /app/
 
+# Exposer le port 8000
+EXPOSE 8000
 
-# Commande par défaut exécutée au démarrage du conteneur
-CMD ["python", "manage.py"]
+# Commande à exécuter
+CMD ["python", "manage.py", "runserver", "0.0.0.0:8000"]
