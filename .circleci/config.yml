@@ -5,7 +5,7 @@ orbs:
 jobs:
   test-python:
     docker:  
-      - image: python:3.10-slim  # Utilisation d'une image officielle Python
+      - image: python:3.10-slim
     steps:
       - checkout
       - run:
@@ -31,12 +31,12 @@ jobs:
           version: 20.10.7
       - run:
           name: Build Docker image
-          command: docker build -t $DOCKERHUB_USERNAME/my-app:latest .
+          command: docker build -t "$DOCKERHUB_USERNAME/my-app:latest" .
       - run:
           name: Push Docker image
           command: |
-            echo $DOCKERHUB_PASSWORD | docker login -u $DOCKERHUB_USERNAME -p $DOCKERHUB_PASSWORD
-            docker push $DOCKERHUB_USERNAME/my-app:latest
+            echo $DOCKERHUB_PASSWORD | docker login -u $DOCKERHUB_USERNAME --password-stdin
+            docker push "$DOCKERHUB_USERNAME/my-app:latest"
 
 workflows:
   build-and-test:
