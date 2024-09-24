@@ -7,8 +7,11 @@ WORKDIR /app
 # Copier les fichiers requirements
 COPY requirements.txt /app/
 
-# Installer les dépendances
-RUN pip install --no-cache-dir -r requirements.txt
+# Mettre à jour pip
+RUN pip install --upgrade pip
+
+# Installer les dépendances avec des options pour limiter les ressources
+RUN pip install --no-cache-dir --no-use-pep517 -r requirements.txt
 
 # Copier tout le code source de l'application dans le conteneur
 COPY . /app/
