@@ -7,12 +7,13 @@ WORKDIR /app
 # Copier le fichier requirements.txt dans le conteneur
 COPY requirements.txt /app/
 
-# Mettre à jour pip et installer les dépendances sans cache
-RUN pip install --upgrade pip
-RUN pip install --no-cache-dir --disable-pip-version-check -r requirements.txt
+# Installer les dépendances sans mise à jour de pip
+RUN pip install --upgrade pip==24.2 --progress-bar off
+RUN pip install --no-cache-dir --disable-pip-version-check -r requirements.txt --progress-bar off
 
 # Copier le reste de l'application dans le conteneur
 COPY . /app
 
 # Commande par défaut pour exécuter l'application
-CMD ["python", "manage.py"] 
+# Remplacez par la commande appropriée pour démarrer votre application
+CMD ["python", "manage.py", "runserver", "0.0.0.0:8000"]
