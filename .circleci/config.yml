@@ -45,7 +45,7 @@ jobs:
             docker push $DOCKERHUB_USERNAME/my-app:latest
 
 workflows:
-  build_test_deploy:
+  build_and_test:
     jobs:
       - build_and_test
       - build_docker_image:
