@@ -7,8 +7,6 @@ WORKDIR /app
 # Copier les fichiers requirements
 COPY requirements.txt /app/
 
-# Mettre à jour pip
-RUN pip install --upgrade pip
 
 # Installer les dépendances avec des options pour limiter les ressources
 RUN pip install --no-cache-dir --no-use-pep517 -r requirements.txt
