@@ -143,10 +143,7 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 
 sentry_sdk.init(
-    dsn=(
-        "https://f6be3c13cd21ef04ffeea33737e6bcf8"
-        "@o4507899769389056.ingest.de.sentry.io/4507973355044944"
-    ),
+    dsn=os.environ.get("SENTRY_DSN"),
     # Set traces_sample_rate to 1.0 to capture 100%
     # of transactions for tracing.
     traces_sample_rate=1.0,
