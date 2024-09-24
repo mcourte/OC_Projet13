@@ -4,7 +4,7 @@ orbs:
   docker: circleci/docker@2.1.3
 
 jobs:
-  test-python:
+  build-and-test:
     docker:  
       - image: python:3.10-slim
     steps:
@@ -45,9 +45,9 @@ jobs:
             docker push $DOCKERHUB_USERNAME/my-app:latest
 
 workflows:
-  build-and-test:
+  build_test_deploy:
     jobs:
-      - test-python
+      - build_and_test
       - build_docker_image:
           requires:
-            - build_docker_image
+            - build_and_test
