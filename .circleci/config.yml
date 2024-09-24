@@ -1,11 +1,12 @@
 version: 2.1
 orbs:
-  python: circleci/python@2
+  python: circleci/python@2.0.3
+  docker: circleci/docker@2.1.3
 
 jobs:
   test-python:
-    docker:  # Ajout d'un environnement Docker
-      - image: circleci/python:3.12  # Vous pouvez ajuster la version de Python si nécessaire
+    docker:  
+      - image: circleci/python:3.10.2
     steps:
       - checkout
       - run:
@@ -22,5 +23,3 @@ workflows:
   build-and-test:
     jobs:
       - test-python
-
-
