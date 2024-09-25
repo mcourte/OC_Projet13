@@ -44,6 +44,20 @@ jobs:
             echo $DOCKERHUB_PASSWORD | docker login -u $DOCKERHUB_USERNAME --password-stdin
             docker push $DOCKERHUB_USERNAME/my-app:latest
 
+    deploy:
+      machine:
+        image: ubuntu-2004:202010-01
+      steps:
+        - attach_workspace:
+            at: ~/project
+        - run:
+            name: Deploy to Render
+            command: |
+              curl -X POST $HOOK_RENDER \
+              -H 'Authorization: Bearer $RENDER_API_KEY' \
+              -H 'Content-Type: application/json' \
+              -d '{"image": "docker.io/$DOCKERHUB_USERNAME/my-app:latest", "clearCache": false}'
+
 workflows:
   build-and-test-workflow:
     jobs:
@@ -51,3 +65,9 @@ workflows:
       - build_docker_image:
           requires:
             - build-and-test
+      - deploy:
+          requires:
+            - build_docker_image
+          filters:
+            branches:
+              only: main
