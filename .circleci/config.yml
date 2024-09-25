@@ -47,17 +47,22 @@ jobs:
 
   deploy:
     machine:
-      image: ubuntu-2004:202010-01
+      image: ubuntu-2004:202210-01  # Image mise à jour
     steps:
       - attach_workspace:
           at: ~/project
       - run:
           name: Deploy to Render
           command: |
-            curl -X POST $HOOK_RENDER \
-            -H 'Authorization: Bearer $RENDER_API_KEY' \
-            -H 'Content-Type: application/json' \
-            -d '{"image": "docker.io/$DOCKERHUB_USERNAME/my-app:latest", "clearCache": false}'
+            if [ -z "$HOOK_RENDER" ]; then
+              echo "Error: HOOK_RENDER is not set"
+              exit 1
+            fi
+          curl -X POST $HOOK_RENDER \
+          -H 'Authorization: Bearer $RENDER_API_KEY' \
+          -H 'Content-Type: application/json' \
+          -d '{"image": "docker.io/$DOCKERHUB_USERNAME/my-app:latest", "clearCache": false}'
+
 
 workflows:
   build-and-deploy-workflow:
