@@ -14,6 +14,10 @@ RUN pip install --no-cache-dir --disable-pip-version-check -r requirements.txt -
 # Copier le reste de l'application dans le conteneur
 COPY . /app
 
-# Commande par défaut pour exécuter l'application
-# Remplacez par la commande appropriée pour démarrer votre application
-CMD ["python", "manage.py", "runserver", "0.0.0.0:8080"]
+
+# Donne les permissions d'exécution à start_render.sh
+RUN chmod a+x start_render.sh
+
+EXPOSE 8000
+
+CMD ["sh", "-c", "./start_render.sh && gunicorn --bind 0.0.0.0:8000 oc_lettings_site.wsgi:application"]
