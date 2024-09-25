@@ -16,8 +16,12 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.getenv('SECRET_KEY', "secret-key")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = os.getenv('DEBUG', "False") == "True"
-ALLOWED_HOSTS = os.getenv("ALLOWED_HOSTS", "localhost,127.0.0.1").split(",")
+DEBUG = "False"
+ALLOWED_HOSTS = [
+    'localhost',
+    '127.0.0.1',
+    'oc-projet13-kqrq.onrender.com',
+]
 
 
 # Application definition
