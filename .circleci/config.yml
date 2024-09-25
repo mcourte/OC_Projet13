@@ -46,8 +46,7 @@ jobs:
 
   deploy:
     machine:
-      enabled: true
-      image: circleci/ubuntu:20.04  # Image valide
+      resource_class: large  # Classe de ressources définie ici
     steps:
       - attach_workspace:
           at: ~/project
