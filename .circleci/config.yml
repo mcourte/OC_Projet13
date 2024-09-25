@@ -46,7 +46,8 @@ jobs:
 
   deploy:
     machine:
-      image: ubuntu-2004:202210-01  # Image mise à jour
+      enabled: true
+      image: circleci/ubuntu:20.04  # Image valide
     steps:
       - attach_workspace:
           at: ~/project
