@@ -12,7 +12,7 @@ RUN pip install --upgrade pip==24.2 --progress-bar off
 RUN pip install --no-cache-dir --disable-pip-version-check -r requirements.txt --progress-bar off
 
 # Copier le reste de l'application dans le conteneur
-COPY . /app
+COPY . .
 
 
 # Donne les permissions d'exécution à start_render.sh
