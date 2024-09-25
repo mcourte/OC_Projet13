@@ -53,10 +53,6 @@ jobs:
       - run:
           name: Deploy to Render
           command: |
-            if [ -z "$HOOK_RENDER" ]; then
-              echo "Error: HOOK_RENDER is not set"
-              exit 1
-            fi
             curl -X POST $HOOK_RENDER \
             -H 'Authorization: Bearer $RENDER_API_KEY' \
             -H 'Content-Type: application/json' \
