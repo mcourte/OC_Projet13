@@ -1,5 +1,4 @@
 version: 2.1
-
 orbs:
   python: circleci/python@2.0.3
   docker: circleci/docker@2.1.3
@@ -58,11 +57,10 @@ jobs:
               echo "Error: HOOK_RENDER is not set"
               exit 1
             fi
-          curl -X POST $HOOK_RENDER \
-          -H 'Authorization: Bearer $RENDER_API_KEY' \
-          -H 'Content-Type: application/json' \
-          -d '{"image": "docker.io/$DOCKERHUB_USERNAME/my-app:latest", "clearCache": false}'
-
+            curl -X POST $HOOK_RENDER \
+            -H 'Authorization: Bearer $RENDER_API_KEY' \
+            -H 'Content-Type: application/json' \
+            -d '{"image": "docker.io/$DOCKERHUB_USERNAME/my-app:latest", "clearCache": false}'
 
 workflows:
   build-and-deploy-workflow:
