@@ -16,4 +16,4 @@ COPY . /app
 
 # Commande par défaut pour exécuter l'application
 # Remplacez par la commande appropriée pour démarrer votre application
-CMD ["python", "manage.py", "runserver", "0.0.0.0:8000"]
+CMD ["python", "manage.py", "runserver", "0.0.0.0:8080"]
