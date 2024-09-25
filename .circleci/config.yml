@@ -5,7 +5,7 @@ orbs:
 
 jobs:
   build-and-test:
-    docker:  
+    docker:
       - image: python:3.10-slim
     steps:
       - checkout
@@ -44,7 +44,7 @@ jobs:
             echo $DOCKERHUB_PASSWORD | docker login -u $DOCKERHUB_USERNAME --password-stdin
             docker push $DOCKERHUB_USERNAME/my-app:latest
 
- deploy:
+  deploy:
     machine:
       resource_class: large  # Classe de ressources définie ici
     steps:
