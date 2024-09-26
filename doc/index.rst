@@ -3,7 +3,7 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 OC-Lettings-Site documentation
-==========
+==============================
 
 .. contents::
    :depth: 2
@@ -40,26 +40,26 @@ Placer vous dans la dossier dans lequel vous souhaitez cloner le git et taper ``
 Etape 2 ; Installer Python et ouvrir le terminal de commande
 ------------------------------------------------------------
 
-Télécharger [Python] (https://www.python.org/downloads/) et [installer-le] (https://fr.wikihow.com/installer-Python)
+Télécharger `Python <https://www.python.org/downloads/>`_ et `installer-le <https://fr.wikihow.com/installer-Python>`_.
 
 Ouvrir le terminal de commande :  
-Pour les utilisateurs de Windows : [démarche à suivre] (https://support.kaspersky.com/fr/common/windows/14637#block0)  
-Pour les utilisateurs de Mac OS : [démarche à suivre] (https://support.apple.com/fr-fr/guide/terminal/apd5265185d-f365-44cb-8b09-71a064a42125/mac)  
-Pour les utilisateurs de Linux : ouvrez directement le terminal de commande   
+Pour les utilisateurs de Windows : `démarche à suivre <https://support.kaspersky.com/fr/common/windows/14637#block0>`_  
+Pour les utilisateurs de Mac OS : `démarche à suivre <https://support.apple.com/fr-fr/guide/terminal/apd5265185d-f365-44cb-8b09-71a064a42125/mac>`_  
+Pour les utilisateurs de Linux : ouvrez directement le terminal de commande.
 
 
 Etape 3 : Création de l'environnement virtuel
 ---------------------------------------------
 Se placer dans le dossier où l'on a extrait l'ensemble des documents grâce à la commande ``cd``  
-Exemple :
+Exemple :  
 ``cd home/magali/OpenClassrooms/Formation/Projet_13``
 
 
-Dans le terminal de commande, executer la commande suivante :
+Dans le terminal de commande, executer la commande suivante :  
 ``python3 -m venv venv``
 
 
-Activez l'environnement virtuel
+Activez l'environnement virtuel  
 ``source venv/bin/activate``
 - Pour les utilisateurs de Windows, la commande est la suivante : 
 -  ``venv\Scripts\activate.bat``
