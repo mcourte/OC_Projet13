@@ -1,12 +1,17 @@
 OC-Lettings-Site documentation
 ==============================
 
-.. contents::
-   :depth: 1
-   :local:
 
-Introduction
-============
+.. toctree::
+   :maxdepth: 1
+   :caption: Sommaire
+
+   installation
+
+   docker
+
+   deploiement
+
 Bienvenue dans la documentation technique du projet OC Lettings, une application conçue pour faciliter la gestion de locations immobilières. Ce projet a pour but de fournir une solution complète et intuitive pour les utilisateurs souhaitant gérer leurs biens, qu'il s'agisse de propriétaires ou d'agents immobiliers.
 
 Objectif du projet
@@ -20,12 +25,3 @@ Cette documentation technique est essentielle pour garantir une compréhension a
 Nous encourageons tous les utilisateurs et développeurs à consulter cette documentation pour maximiser l'efficacité du projet et assurer un développement harmonieux et collaboratif.
 
 
-.. toctree::
-   :maxdepth: 1
-   :caption: Sommaire
-
-   installation
-
-   docker
-
-   deploiement
