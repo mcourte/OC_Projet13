@@ -302,10 +302,12 @@ document.write(`
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#qu-est-ce-que-le-deploiement-et-circleci">Qu’est-ce que le déploiement et CircleCI ?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#avantages-de-l-integration-continue-avec-circleci">Avantages de l’intégration continue avec CircleCI :</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#processus-de-deploiement-avec-circleci">Processus de déploiement avec CircleCI :</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#prerequis">1. Prérequis</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#principe">2. Principe</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#configuration-de-circleci">3. Configuration de CircleCI</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#configuration-de-render">4. Configuration de Render</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#configuration-de-render">8. Configuration de Render</a></li>
 </ul>
             </nav>
         </div>
@@ -322,16 +324,24 @@ document.write(`
 <section id="qu-est-ce-que-le-deploiement-et-circleci">
 <h2>Qu’est-ce que le déploiement et CircleCI ?<a class="headerlink" href="#qu-est-ce-que-le-deploiement-et-circleci" title="Lien vers cette rubrique">#</a></h2>
 <p>Le déploiement est le processus par lequel une application est mise en production, rendant son utilisation possible pour les utilisateurs finaux. CircleCI est un service d’intégration et de déploiement continus (CI/CD) qui automatise les processus de test et de déploiement d’applications. Il permet de s’assurer que le code est de haute qualité avant d’être déployé en production.</p>
-<p>Avantages de l’intégration continue avec CircleCI :
-- Automatisation : CircleCI automatise le processus de test et de déploiement, réduisant ainsi le risque d’erreurs humaines.
-- Rapidité : Les modifications apportées au code sont testées et déployées rapidement, ce qui permet une mise à jour continue des fonctionnalités et des corrections de bugs.
-- Qualité du code : CircleCI exécute des tests automatisés et des analyses de linting, garantissant que seul le code de qualité est déployé.
-- Processus de déploiement avec CircleCI :
-- Configuration du projet : Après avoir cloné le projet et configuré un environnement virtuel, créez un nouveau projet sur CircleCI lié à votre dépôt GitHub.
-- Définition des variables d’environnement : Configurez des variables d’environnement nécessaires à l’application dans CircleCI, telles que ALLOWED_HOSTS, DEBUG, DOCKERHUB_PASSWORD, et autres clés secrètes.
-- Pipeline automatisé : Lorsque des mises à jour sont poussées sur la branche master, CircleCI déclenche automatiquement le pipeline qui exécute les tests et le linting du code.
-- Construction et déploiement : Si les tests réussissent, CircleCI construit une image Docker et la pousse sur DockerHub. Ensuite, il déploie l’application sur Render.
-- Surveillance et alertes : CircleCI peut être intégré avec des outils comme Sentry pour surveiller les erreurs et recevoir des alertes en temps réel.</p>
+</section>
+<section id="avantages-de-l-integration-continue-avec-circleci">
+<h2>Avantages de l’intégration continue avec CircleCI :<a class="headerlink" href="#avantages-de-l-integration-continue-avec-circleci" title="Lien vers cette rubrique">#</a></h2>
+<ul class="simple">
+<li><p><strong>Automatisation</strong> : CircleCI automatise le processus de test et de déploiement, réduisant ainsi le risque d’erreurs humaines.</p></li>
+<li><p><strong>Rapidité</strong> : Les modifications apportées au code sont testées et déployées rapidement, ce qui permet une mise à jour continue des fonctionnalités et des corrections de bugs.</p></li>
+<li><p><strong>Qualité du code</strong> : CircleCI exécute des tests automatisés et des analyses de linting, garantissant que seul le code de qualité est déployé.</p></li>
+</ul>
+</section>
+<section id="processus-de-deploiement-avec-circleci">
+<h2>Processus de déploiement avec CircleCI :<a class="headerlink" href="#processus-de-deploiement-avec-circleci" title="Lien vers cette rubrique">#</a></h2>
+<ol class="arabic simple">
+<li><p><strong>Configuration du projet</strong> : Après avoir cloné le projet et configuré un environnement virtuel, créez un nouveau projet sur CircleCI lié à votre dépôt GitHub.</p></li>
+<li><p><strong>Définition des variables d’environnement</strong> : Configurez des variables d’environnement nécessaires à l’application dans CircleCI, telles que ALLOWED_HOSTS, DEBUG, DOCKERHUB_PASSWORD, et autres clés secrètes.</p></li>
+<li><p><strong>Pipeline automatisé</strong> : Lorsque des mises à jour sont poussées sur la branche master, CircleCI déclenche automatiquement le pipeline qui exécute les tests et le linting du code.</p></li>
+<li><p><strong>Construction et déploiement</strong> : Si les tests réussissent, CircleCI construit une image Docker et la pousse sur DockerHub. Ensuite, il déploie l’application sur Render.</p></li>
+<li><p><strong>Surveillance et alertes</strong> : CircleCI peut être intégré avec des outils comme Sentry pour surveiller les erreurs et recevoir des alertes en temps réel.</p></li>
+</ol>
 <p>Le déploiement automatisé avec CircleCI permet d’améliorer l’efficacité, la rapidité et la qualité des mises à jour de l’application. En intégrant des tests automatisés et des vérifications de code, il contribue à maintenir une base de code robuste et fiable, tout en assurant une expérience utilisateur fluide et sans interruption.</p>
 </section>
 <section id="prerequis">
@@ -347,10 +357,10 @@ document.write(`
 </section>
 <section id="principe">
 <h2>2. Principe<a class="headerlink" href="#principe" title="Lien vers cette rubrique">#</a></h2>
-<p>Le déploiement de l’application est automatisé par le pipeline CircleCI. Lorsque des mises à jour sont poussées sur le dépôt GitHub, le pipeline déclenche l’exécution de la suite de tests et le linting du code pour toutes les branches du projet. Si des mises à jour sont effectuées sur la branche main, et uniquement si les tests et le linting réussissent.
-Workflow :
-Construit une image Docker et la pousse sur DockerHub.
-Si et seulement si l’étape précédente réussit, déploie l’application sur Render.</p>
+<p>Le déploiement de l’application est automatisé par le pipeline CircleCI. Lorsque des mises à jour sont poussées sur le dépôt GitHub, le pipeline déclenche l’exécution de la suite de tests et le linting du code pour toutes les branches du projet. Si des mises à jour sont effectuées sur la branche main, et uniquement si les tests et le linting réussissent.</p>
+<p>Workflow :
+- Construit une image Docker et la pousse sur DockerHub.
+- Si l’étape précédente réussit, déploie l’application sur Render.</p>
 </section>
 <section id="configuration-de-circleci">
 <h2>3. Configuration de CircleCI<a class="headerlink" href="#configuration-de-circleci" title="Lien vers cette rubrique">#</a></h2>
@@ -359,41 +369,41 @@ Si et seulement si l’étape précédente réussit, déploie l’application su
 <li><p>Connectez-vous à votre compte CircleCI.</p></li>
 <li><p>Allez sur « Projects » et sélectionnez « Set Up Project » pour le projet cloné depuis GitHub.</p></li>
 <li><p>Choisissez la branche main comme source pour le fichier .circleci/config.yml.</p></li>
-<li><p>Pour que le pipeline CircleCI fonctionne correctement, configurez les variables d’environnement suivantes (Paramètres du projet &gt; Variables d’environnement) :</p></li>
-</ol>
+<li><p>Pour que le pipeline CircleCI fonctionne correctement, configurez les variables d’environnement suivantes (Paramètres du projet &gt; Variables d’environnement) :</p>
 <ul class="simple">
-<li><p>ALLOWED_HOSTS : Spécifiez les hôtes autorisés pour l’application (par exemple, localhost, your-domain.com).</p></li>
-<li><p>DEBUG : Choisissez True (en local) ou False (en production).</p></li>
-<li><p>DOCKERHUB_PASSWORD : Mot de passe du compte Docker.</p></li>
-<li><p>DOCKERHUB_USERNAME : Nom d’utilisateur du compte Docker.</p></li>
-<li><p>HOOK_RENDER : URL de l’API Render pour le déploiement automatique.</p></li>
-<li><p>SECRET_KEY : Clé secrète de l’application Django (générée lors de la création du projet Django).</p></li>
-<li><p>SENTRY_DSN : URL du projet Sentry pour le suivi des erreurs.</p></li>
+<li><p><strong>ALLOWED_HOSTS</strong> : Spécifiez les hôtes autorisés pour l’application (par exemple, localhost, your-domain.com).</p></li>
+<li><p><strong>DEBUG</strong> : Choisissez True (en local) ou False (en production).</p></li>
+<li><p><strong>DOCKERHUB_PASSWORD</strong> : Mot de passe du compte Docker.</p></li>
+<li><p><strong>DOCKERHUB_USERNAME</strong> : Nom d’utilisateur du compte Docker.</p></li>
+<li><p><strong>HOOK_RENDER</strong> : URL de l’API Render pour le déploiement automatique.</p></li>
+<li><p><strong>SECRET_KEY</strong> : Clé secrète de l’application Django (générée lors de la création du projet Django).</p></li>
+<li><p><strong>SENTRY_DSN</strong> : URL du projet Sentry pour le suivi des erreurs.</p></li>
 </ul>
-<ol class="arabic simple" start="6">
-<li><p>Ajout de tests et étapes supplémentaires : Vous pouvez personnaliser davantage le pipeline CircleCI en ajoutant des étapes de tests automatisés pour garantir la qualité du code avant le déploiement. Par exemple, vous pouvez ajouter des étapes pour :</p></li>
-<li><p>Exécuter des tests unitaires avec pytest ou unittest.</p></li>
-<li><p>Vérifier la qualité du code avec des outils comme flake8 pour le linting Python.</p></li>
-<li><p>Mettre en cache les dépendances pour réduire le temps d’exécution.</p></li>
+</li>
+<li><p>Ajout de tests et étapes supplémentaires : Vous pouvez personnaliser davantage le pipeline CircleCI en ajoutant des étapes de tests automatisés pour garantir la qualité du code avant le déploiement. Par exemple, vous pouvez ajouter des étapes pour :
+- Exécuter des tests unitaires avec pytest ou unittest.
+- Vérifier la qualité du code avec des outils comme flake8 pour le linting Python.
+- Mettre en cache les dépendances pour réduire le temps d’exécution.</p></li>
 <li><p>Gestion des erreurs : Utilisez des outils tels que Sentry pour capturer les erreurs en temps réel dans l’application, et CircleCI peut intégrer ces alertes dans le pipeline.</p></li>
 </ol>
 </section>
 <section id="configuration-de-render">
-<h2>4. Configuration de Render<a class="headerlink" href="#configuration-de-render" title="Lien vers cette rubrique">#</a></h2>
+<h2>8. Configuration de Render<a class="headerlink" href="#configuration-de-render" title="Lien vers cette rubrique">#</a></h2>
 <ol class="arabic simple">
 <li><p>Connectez-vous à votre compte Render.</p></li>
 <li><p>Créez un Web Service pour l’application en spécifiant le dépôt GitHub où le code est hébergé.</p></li>
-<li><p>Dans l’interface de Render, définissez les variables d’environnement requises pour votre application dans la section des paramètres du service Web :</p></li>
-</ol>
+<li><p>Dans l’interface de Render, définissez les variables d’environnement requises pour votre application dans la section des paramètres du service Web :</p>
 <ul class="simple">
-<li><p>ALLOWED_HOSTS : Saisissez les hôtes autorisés (comme your-domain.com ou localhost).</p></li>
-<li><p>DEBUG : Choisissez True pour activer le mode debug ou False pour la production.</p></li>
-<li><p>DOCKERHUB_PASSWORD : Mot de passe du compte Docker.</p></li>
-<li><p>DOCKERHUB_USERNAME : Nom d’utilisateur du compte Docker.</p></li>
-<li><p>SECRET_KEY : Clé secrète de Django pour votre application.</p></li>
-<li><p>SENTRY_DSN : URL du projet Sentry pour le suivi des erreurs.</p></li>
-<li><p>Hooks de déploiement : Configurez un webhook dans Render pour que CircleCI puisse déclencher automatiquement le déploiement une fois l’image Docker mise à jour sur DockerHub. Cela assure une continuité de l’intégration/déploiement en cas de succès des tests sur CircleCI.</p></li>
+<li><p><strong>ALLOWED_HOSTS</strong> : Saisissez les hôtes autorisés (comme your-domain.com ou localhost).</p></li>
+<li><p><strong>DEBUG</strong> : Choisissez True pour activer le mode debug ou False pour la production.</p></li>
+<li><p><strong>DOCKERHUB_PASSWORD</strong> : Mot de passe du compte Docker.</p></li>
+<li><p><strong>DOCKERHUB_USERNAME</strong> : Nom d’utilisateur du compte Docker.</p></li>
+<li><p><strong>SECRET_KEY</strong> : Clé secrète de Django pour votre application.</p></li>
+<li><p><strong>SENTRY_DSN</strong> : URL du projet Sentry pour le suivi des erreurs.</p></li>
 </ul>
+</li>
+<li><p>Hooks de déploiement : Configurez un webhook dans Render pour que CircleCI puisse déclencher automatiquement le déploiement une fois l’image Docker mise à jour sur DockerHub. Cela assure une continuité de l’intégration/déploiement en cas de succès des tests sur CircleCI.</p></li>
+</ol>
 <p>Surveillance et logs : Render offre également des options pour surveiller votre application déployée, accéder aux logs, et vérifier la santé du service en continu.</p>
 </section>
 </section>
@@ -435,10 +445,12 @@ Si et seulement si l’étape précédente réussit, déploie l’application su
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#qu-est-ce-que-le-deploiement-et-circleci">Qu’est-ce que le déploiement et CircleCI ?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#avantages-de-l-integration-continue-avec-circleci">Avantages de l’intégration continue avec CircleCI :</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#processus-de-deploiement-avec-circleci">Processus de déploiement avec CircleCI :</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#prerequis">1. Prérequis</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#principe">2. Principe</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#configuration-de-circleci">3. Configuration de CircleCI</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#configuration-de-render">4. Configuration de Render</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#configuration-de-render">8. Configuration de Render</a></li>
 </ul>
   </nav></div>
 
