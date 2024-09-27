@@ -20,9 +20,7 @@ Pré-requis
 
 Etape 1 : Télécharger le code
 -----------------------------
-Cliquer sur le bouton vert "<> Code" puis sur Download ZIP.  
-Extraire l'ensemble des éléments dans le dossier dans lequel vous voulez stockez les datas qui seront téléchargées.
-Vous pouvez également cloner le dépôt:  
+Vous pouvez cloner le dépôt git dans lequel se trouve l'ensemble du projet:  
 Placer vous dans la dossier dans lequel vous souhaitez cloner le git et taper ``git clone https://github.com/mcourte/OC_Projet13.git``
 
 
