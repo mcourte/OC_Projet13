@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>3. Deployment &#8212; Documentation OC-Lettings-Site 1</title>
+    <title>3. Déploiement &#8212; Documentation OC-Lettings-Site 1</title>
   
   
   
@@ -152,7 +152,7 @@
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="docker.html">Docker</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">3. Deployment</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">3. Déploiement</a></li>
 </ul>
 
     </div>
@@ -291,7 +291,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>3. Deployment</h1>
+    <h1>3. Déploiement</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -301,10 +301,10 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#prerequisites">1. Prerequisites</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">2. Summary</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#configuration-circleci">3. Configuration CircleCI</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#configuration-render">4. Configuration Render</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#prerequis">1. Prérequis</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#resume">1. Résumé</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#configuration-de-circleci">2. Configuration de CircleCI</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#configuration-de-render">3. Configuration de Render</a></li>
 </ul>
             </nav>
         </div>
@@ -316,58 +316,68 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section id="deployment">
-<h1>3. Deployment<a class="headerlink" href="#deployment" title="Lien vers cette rubrique">#</a></h1>
-<section id="prerequisites">
-<h2>1. Prerequisites<a class="headerlink" href="#prerequisites" title="Lien vers cette rubrique">#</a></h2>
-<blockquote>
-<div><p>In order to perform the deployment and continuous integration of the app, the following accounts are required:</p>
-<p>GitHub account</p>
-<p>CircleCI account (linked to GitHub account)</p>
-<p>Docker account</p>
-<p>Render account</p>
-<p>Sentry account</p>
-</div></blockquote>
-</section>
-<section id="summary">
-<h2>2. Summary<a class="headerlink" href="#summary" title="Lien vers cette rubrique">#</a></h2>
-<blockquote>
-<div><p>The deployment of the app is automated by the CircleCI pipeline. When updates are pushed to the GitHub repository, the pipeline triggers the test suite and code linting for all project branches. If updates are made on the master branch, and if and only if the tests and linting pass, the workflow:</p>
-<p>Builds a Docker image and pushes it to DockerHub</p>
-<p>If and only if the previous step passes, deploys the app on Render</p>
-</div></blockquote>
-</section>
-<section id="configuration-circleci">
-<h2>3. Configuration CircleCI<a class="headerlink" href="#configuration-circleci" title="Lien vers cette rubrique">#</a></h2>
-<blockquote>
-<div><p>After cloning the project, setting up the local virtual environment (see Local development) and creating the required accounts, set up a new project on CircleCI via « Set Up Project ».</p>
-<p>Select the master branch as a source for the .circleci/config.yml file</p>
-<p>To run the CircleCI pipeline properly, set up the following environment variables (Project Settings &gt; Environment Variables):</p>
+  <section id="deploiement">
+<h1>3. Déploiement<a class="headerlink" href="#deploiement" title="Lien vers cette rubrique">#</a></h1>
+<section id="prerequis">
+<h2>1. Prérequis<a class="headerlink" href="#prerequis" title="Lien vers cette rubrique">#</a></h2>
+<p>Pour effectuer le déploiement et l’intégration continue de l’application, les comptes suivants sont nécessaires :</p>
 <ul class="simple">
-<li><p><strong>ALLOWED_HOSTS</strong> : enter allowed host</p></li>
-<li><p><strong>DEBUG</strong> : select True or False</p></li>
-<li><p><strong>DOCKERHUB_PASSWORD</strong> : Docker account password</p></li>
-<li><p><strong>DOCKERHUB_USERNAME</strong> : Docker account username</p></li>
-<li><p><strong>HOOK_RENDER</strong> : api render for deploy</p></li>
-<li><p><strong>SECRET_KEY</strong> : Django secret key</p></li>
-<li><p><strong>SENTRY_DSN</strong> : Sentry project URL</p></li>
+<li><p>Compte GitHub</p></li>
+<li><p>Compte CircleCI (lié au compte GitHub)</p></li>
+<li><p>Compte Docker</p></li>
+<li><p>Compte Render</p></li>
+<li><p>Compte Sentry</p></li>
 </ul>
-</div></blockquote>
 </section>
-<section id="configuration-render">
-<h2>4. Configuration Render<a class="headerlink" href="#configuration-render" title="Lien vers cette rubrique">#</a></h2>
-<blockquote>
-<div><p>On Render, now create your Web Service</p>
-<p>Then define environment variables on the Render Web Service :</p>
+<section id="resume">
+<h2>1. Résumé<a class="headerlink" href="#resume" title="Lien vers cette rubrique">#</a></h2>
+<p>Le déploiement de l’application est automatisé par le pipeline CircleCI. Lorsque des mises à jour sont poussées sur le dépôt GitHub, le pipeline déclenche l’exécution de la suite de tests et le linting du code pour toutes les branches du projet. Si des mises à jour sont effectuées sur la branche master, et uniquement si les tests et le linting réussissent, le workflow :</p>
+<p>Construit une image Docker et la pousse sur DockerHub.
+Si et seulement si l’étape précédente réussit, déploie l’application sur Render.</p>
+</section>
+<section id="configuration-de-circleci">
+<h2>2. Configuration de CircleCI<a class="headerlink" href="#configuration-de-circleci" title="Lien vers cette rubrique">#</a></h2>
+<ol class="arabic simple">
+<li><p>Après avoir cloné le projet, configuré l’environnement virtuel local (voir section Développement local) et créé les comptes nécessaires, suivez ces étapes pour configurer un nouveau projet sur CircleCI :</p></li>
+<li><p>Connectez-vous à votre compte CircleCI.</p></li>
+<li><p>Allez sur « Projects » et sélectionnez « Set Up Project » pour le projet cloné depuis GitHub.</p></li>
+<li><p>Choisissez la branche main comme source pour le fichier .circleci/config.yml.</p></li>
+<li><p>Pour que le pipeline CircleCI fonctionne correctement, configurez les variables d’environnement suivantes (Paramètres du projet &gt; Variables d’environnement) :</p></li>
+</ol>
 <ul class="simple">
-<li><p><strong>ALLOWED_HOSTS</strong> : enter allowed host</p></li>
-<li><p><strong>DEBUG</strong> : select True or False</p></li>
-<li><p><strong>DOCKERHUB_PASSWORD</strong> : Docker account password</p></li>
-<li><p><strong>DOCKERHUB_USERNAME</strong> : Docker account username</p></li>
-<li><p><strong>SECRET_KEY</strong> : Django secret key</p></li>
-<li><p><strong>SENTRY_DSN</strong> : Sentry project URL</p></li>
+<li><p>ALLOWED_HOSTS : Spécifiez les hôtes autorisés pour l’application (par exemple, localhost, your-domain.com).</p></li>
+<li><p>DEBUG : Choisissez True (en local) ou False (en production).</p></li>
+<li><p>DOCKERHUB_PASSWORD : Mot de passe du compte Docker.</p></li>
+<li><p>DOCKERHUB_USERNAME : Nom d’utilisateur du compte Docker.</p></li>
+<li><p>HOOK_RENDER : URL de l’API Render pour le déploiement automatique.</p></li>
+<li><p>SECRET_KEY : Clé secrète de l’application Django (générée lors de la création du projet Django).</p></li>
+<li><p>SENTRY_DSN : URL du projet Sentry pour le suivi des erreurs.</p></li>
 </ul>
-</div></blockquote>
+<ol class="arabic simple" start="6">
+<li><p>Ajout de tests et étapes supplémentaires : Vous pouvez personnaliser davantage le pipeline CircleCI en ajoutant des étapes de tests automatisés pour garantir la qualité du code avant le déploiement. Par exemple, vous pouvez ajouter des étapes pour :</p></li>
+<li><p>Exécuter des tests unitaires avec pytest ou unittest.</p></li>
+<li><p>Vérifier la qualité du code avec des outils comme flake8 pour le linting Python.</p></li>
+<li><p>Mettre en cache les dépendances pour réduire le temps d’exécution.</p></li>
+<li><p>Gestion des erreurs : Utilisez des outils tels que Sentry pour capturer les erreurs en temps réel dans l’application, et CircleCI peut intégrer ces alertes dans le pipeline.</p></li>
+</ol>
+</section>
+<section id="configuration-de-render">
+<h2>3. Configuration de Render<a class="headerlink" href="#configuration-de-render" title="Lien vers cette rubrique">#</a></h2>
+<ol class="arabic simple">
+<li><p>Connectez-vous à votre compte Render.</p></li>
+<li><p>Créez un Web Service pour l’application en spécifiant le dépôt GitHub où le code est hébergé.</p></li>
+<li><p>Dans l’interface de Render, définissez les variables d’environnement requises pour votre application dans la section des paramètres du service Web :</p></li>
+</ol>
+<ul class="simple">
+<li><p>ALLOWED_HOSTS : Saisissez les hôtes autorisés (comme your-domain.com ou localhost).</p></li>
+<li><p>DEBUG : Choisissez True pour activer le mode debug ou False pour la production.</p></li>
+<li><p>DOCKERHUB_PASSWORD : Mot de passe du compte Docker.</p></li>
+<li><p>DOCKERHUB_USERNAME : Nom d’utilisateur du compte Docker.</p></li>
+<li><p>SECRET_KEY : Clé secrète de Django pour votre application.</p></li>
+<li><p>SENTRY_DSN : URL du projet Sentry pour le suivi des erreurs.</p></li>
+<li><p>Hooks de déploiement : Configurez un webhook dans Render pour que CircleCI puisse déclencher automatiquement le déploiement une fois l’image Docker mise à jour sur DockerHub. Cela assure une continuité de l’intégration/déploiement en cas de succès des tests sur CircleCI.</p></li>
+</ul>
+<p>Surveillance et logs : Render offre également des options pour surveiller votre application déployée, accéder aux logs, et vérifier la santé du service en continu.</p>
 </section>
 </section>
 
@@ -407,10 +417,10 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#prerequisites">1. Prerequisites</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">2. Summary</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#configuration-circleci">3. Configuration CircleCI</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#configuration-render">4. Configuration Render</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#prerequis">1. Prérequis</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#resume">1. Résumé</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#configuration-de-circleci">2. Configuration de CircleCI</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#configuration-de-render">3. Configuration de Render</a></li>
 </ul>
   </nav></div>
 
