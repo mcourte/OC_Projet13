@@ -62,7 +62,7 @@ Activez l'environnement virtuel
    .. code-block:: console
       $ source venv/bin/activate
 
-- Pour les utilisateurs de Windows, la commande est la suivante :
+Pour les utilisateurs de Windows, la commande est la suivante :
 
    .. code-block:: console
 
