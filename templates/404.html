@@ -12,15 +12,15 @@
 
   <div class="container px-5 py-5 text-center">
     <div class="justify-content-center">
-      <p>Error description :
+      <p>Description de l'erreur :
         {% if error %}
           {{error}}
         {% else %}
-          Sorry, the path {{request.path}} is incorrect...
+          Désolé, le chemin {{request.path}} est incorrect...
         {% endif %}
       </p>
-      <p>The page doesn't exist. </p>
-      <a href="/" class="btn fw-500 ms-lg-4 btn-primary px-10">Go to Homepage</a>
+      <p>La page n'existe pas. </p>
+      <a href="/" class="btn fw-500 ms-lg-4 btn-primary px-10">Retour à l'accueil</a>
     </div>
   </div>
 
