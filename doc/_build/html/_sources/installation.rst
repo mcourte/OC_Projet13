@@ -15,7 +15,7 @@ Pré-requis
 - pip
 
 Étapes d'installation
----------------------
+=====================
 
 
 Etape 1 : Télécharger le code
@@ -24,7 +24,7 @@ Vous pouvez cloner le dépôt git dans lequel se trouve l'ensemble du projet:
 Placer vous dans la dossier dans lequel vous souhaitez cloner le git et taper ``git clone https://github.com/mcourte/OC_Projet13.git``
 
 
-Etape 2 ; Installer Python et ouvrir le terminal de commande
+Etape 2 : Installer Python et ouvrir le terminal de commande
 ------------------------------------------------------------
 
 Télécharger `Python <https://www.python.org/downloads/>`_ et `installer-le <https://fr.wikihow.com/installer-Python>`_.
