@@ -12,11 +12,11 @@
 
   <div class="container px-5 py-5 text-center">
     <div class="justify-content-center">
-      <p>Description de l'erreur :
+      <p>Error description :
         {% if error %}
           {{error}}
         {% else %}
-          Désolé, le chemin {{request.path}} est incorrect...
+          Sorry, the path {{request.path}} is incorrect...
         {% endif %}
       </p>
       <p>La page n'existe pas. </p>
