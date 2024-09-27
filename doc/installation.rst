@@ -21,7 +21,10 @@ Pré-requis
 Etape 1 : Télécharger le code
 -----------------------------
 Vous pouvez cloner le dépôt git dans lequel se trouve l'ensemble du projet:  
-Placer vous dans la dossier dans lequel vous souhaitez cloner le git et taper ``git clone https://github.com/mcourte/OC_Projet13.git``
+Placer vous dans la dossier dans lequel vous souhaitez cloner le git et taper 
+   .. code-block:: console
+
+      $ git clone https://github.com/mcourte/OC_Projet13.git
 
 
 Etape 2 ; Installer Python et ouvrir le terminal de commande
@@ -41,25 +44,32 @@ Etape 3 : Création de l'environnement virtuel
 Se placer dans le dossier où l'on a extrait l'ensemble des documents grâce à la commande ``cd``  
 Exemple :
 
-``cd home/magali/OpenClassrooms/Formation/Projet_13``
+   .. code-block:: console
+
+      $ cd home/magali/OpenClassrooms/Formation/Projet_13
 
 
 Dans le terminal de commande, executer la commande suivante :
 
-``python3 -m venv venv``
+   .. code-block:: console
+
+      $ python3 -m venv venv
 
 
 Activez l'environnement virtuel
+   .. code-block:: console
 
-``source venv/bin/activate``
+      $ source venv/bin/activate
 
-- Pour les utilisateurs de Windows, la commande est la suivante :
-- 
--  ``venv\Scripts\activate.bat``
+Pour les utilisateurs de Windows, la commande est la suivante :
+   .. code-block:: console
+
+      $ venv\Scripts\activate.bat
 
 Etape 4 : Télécharger les packages nécessaires au bon fonctionnement du programme
 --------------------------------------------------------------------------------
 
 Installez ensuite les packages requis:
+   .. code-block:: console
 
-``pip install -r requirements.txt``
+      $ pip install -r requirements.txt

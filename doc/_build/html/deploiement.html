@@ -6,7 +6,9 @@
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><title>Recherche - Documentation OC-Lettings-Site 1</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>3. Deployment &#8212; Documentation OC-Lettings-Site 1</title>
   
   
   
@@ -39,12 +41,10 @@
     <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
     <script src="_static/translations.js?v=041d0952"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'search';</script>
-  <script src="_static/searchtools.js"></script>
-  <script src="_static/language_data.js"></script>
-  <script src="searchindex.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'deploiement';</script>
     <link rel="index" title="Index" href="genindex.html" />
-    <link rel="search" title="Recherche" href="#" />
+    <link rel="search" title="Recherche" href="search.html" />
+    <link rel="prev" title="Docker" href="docker.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="fr"/>
   </head>
@@ -76,7 +76,7 @@
     <div class="search-button__overlay"></div>
     <div class="search-button__search-container">
 <form class="bd-search d-flex align-items-center"
-      action="#"
+      action="search.html"
       method="get">
   <i class="fa-solid fa-magnifying-glass"></i>
   <input type="search"
@@ -106,8 +106,6 @@
     <div class="bd-container__inner bd-page-width">
       
       
-      
-        
       
       <div class="bd-sidebar-primary bd-sidebar">
         
@@ -151,10 +149,10 @@
         <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">Sommaire</span></p>
-<ul class="nav bd-sidenav">
+<ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="docker.html">Docker</a></li>
-<li class="toctree-l1"><a class="reference internal" href="deploiement.html">3. Deployment</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">3. Deployment</a></li>
 </ul>
 
     </div>
@@ -199,6 +197,54 @@
 
 
 
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Téléchargez cette page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/deploiement.rst" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Télécharger le fichier source"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.rst</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Imprimer au format PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
 <button onclick="toggleFullScreen()"
   class="btn btn-sm btn-fullscreen-button"
   title="Mode plein écran"
@@ -232,7 +278,9 @@ document.write(`
   </button>
 `);
 </script>
-
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
 </div></div>
       
     </div>
@@ -241,42 +289,91 @@ document.write(`
 </div>
               
               
-  <div class="bd-search-container">
-    <h1>Recherche</h1>
-    <noscript>
-      <div class="admonition error">
-        <p class="admonition-title">Erreur</p>
-        <p>Veuillez activer le JavaScript pour que la recherche fonctionne.</p>
-      </div>
-    </noscript>
-    
-<form class="bd-search d-flex align-items-center"
-      action="#"
-      method="get">
-  <i class="fa-solid fa-magnifying-glass"></i>
-  <input type="search"
-         class="form-control"
-         name="q"
-         id="search-input"
-         placeholder="Search..."
-         aria-label="Search..."
-         autocomplete="off"
-         autocorrect="off"
-         autocapitalize="off"
-         spellcheck="false"/>
-  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
-</form>
-    <div id="search-results"></div>
-  </div>
-  <script>
-    // Activate the search field on page load
-    let searchInput = document.querySelector("form.bd-search input");
-    if (searchInput) {
-        searchInput.focus();
-        searchInput.select();
-        console.log("[PST]: Set focus on search field.");
-    }
-  </script>
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>3. Deployment</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contenu </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#prerequisites">1. Prerequisites</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">2. Summary</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#configuration-circleci">3. Configuration CircleCI</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#configuration-render">4. Configuration Render</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="deployment">
+<h1>3. Deployment<a class="headerlink" href="#deployment" title="Lien vers cette rubrique">#</a></h1>
+<section id="prerequisites">
+<h2>1. Prerequisites<a class="headerlink" href="#prerequisites" title="Lien vers cette rubrique">#</a></h2>
+<blockquote>
+<div><p>In order to perform the deployment and continuous integration of the app, the following accounts are required:</p>
+<p>GitHub account</p>
+<p>CircleCI account (linked to GitHub account)</p>
+<p>Docker account</p>
+<p>Render account</p>
+<p>Sentry account</p>
+</div></blockquote>
+</section>
+<section id="summary">
+<h2>2. Summary<a class="headerlink" href="#summary" title="Lien vers cette rubrique">#</a></h2>
+<blockquote>
+<div><p>The deployment of the app is automated by the CircleCI pipeline. When updates are pushed to the GitHub repository, the pipeline triggers the test suite and code linting for all project branches. If updates are made on the master branch, and if and only if the tests and linting pass, the workflow:</p>
+<p>Builds a Docker image and pushes it to DockerHub</p>
+<p>If and only if the previous step passes, deploys the app on Render</p>
+</div></blockquote>
+</section>
+<section id="configuration-circleci">
+<h2>3. Configuration CircleCI<a class="headerlink" href="#configuration-circleci" title="Lien vers cette rubrique">#</a></h2>
+<blockquote>
+<div><p>After cloning the project, setting up the local virtual environment (see Local development) and creating the required accounts, set up a new project on CircleCI via « Set Up Project ».</p>
+<p>Select the master branch as a source for the .circleci/config.yml file</p>
+<p>To run the CircleCI pipeline properly, set up the following environment variables (Project Settings &gt; Environment Variables):</p>
+<ul class="simple">
+<li><p><strong>ALLOWED_HOSTS</strong> : enter allowed host</p></li>
+<li><p><strong>DEBUG</strong> : select True or False</p></li>
+<li><p><strong>DOCKERHUB_PASSWORD</strong> : Docker account password</p></li>
+<li><p><strong>DOCKERHUB_USERNAME</strong> : Docker account username</p></li>
+<li><p><strong>HOOK_RENDER</strong> : api render for deploy</p></li>
+<li><p><strong>SECRET_KEY</strong> : Django secret key</p></li>
+<li><p><strong>SENTRY_DSN</strong> : Sentry project URL</p></li>
+</ul>
+</div></blockquote>
+</section>
+<section id="configuration-render">
+<h2>4. Configuration Render<a class="headerlink" href="#configuration-render" title="Lien vers cette rubrique">#</a></h2>
+<blockquote>
+<div><p>On Render, now create your Web Service</p>
+<p>Then define environment variables on the Render Web Service :</p>
+<ul class="simple">
+<li><p><strong>ALLOWED_HOSTS</strong> : enter allowed host</p></li>
+<li><p><strong>DEBUG</strong> : select True or False</p></li>
+<li><p><strong>DOCKERHUB_PASSWORD</strong> : Docker account password</p></li>
+<li><p><strong>DOCKERHUB_USERNAME</strong> : Docker account username</p></li>
+<li><p><strong>SECRET_KEY</strong> : Django secret key</p></li>
+<li><p><strong>SENTRY_DSN</strong> : Sentry project URL</p></li>
+</ul>
+</div></blockquote>
+</section>
+</section>
+
+
+                </article>
+              
 
               
               
@@ -285,12 +382,39 @@ document.write(`
                 <footer class="prev-next-footer d-print-none">
                   
 <div class="prev-next-area">
+    <a class="left-prev"
+       href="docker.html"
+       title="page précédente">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">précédent</p>
+        <p class="prev-next-title">Docker</p>
+      </div>
+    </a>
 </div>
                 </footer>
               
             </div>
             
             
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contenu
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#prerequisites">1. Prerequisites</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">2. Summary</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#configuration-circleci">3. Configuration CircleCI</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#configuration-render">4. Configuration Render</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
               
             
           </div>

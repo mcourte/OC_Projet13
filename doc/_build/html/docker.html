@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Installation &#8212; Documentation OC-Lettings-Site 1</title>
+    <title>Docker &#8212; Documentation OC-Lettings-Site 1</title>
   
   
   
@@ -41,11 +41,11 @@
     <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
     <script src="_static/translations.js?v=041d0952"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'installation';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'docker';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Recherche" href="search.html" />
-    <link rel="next" title="Docker" href="docker.html" />
-    <link rel="prev" title="OC-Lettings-Site documentation" href="index.html" />
+    <link rel="next" title="3. Deployment" href="deploiement.html" />
+    <link rel="prev" title="Installation" href="installation.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="fr"/>
   </head>
@@ -151,8 +151,8 @@
     <div class="bd-toc-item navbar-nav active">
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">Sommaire</span></p>
 <ul class="current nav bd-sidenav">
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Installation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="docker.html">Docker</a></li>
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Docker</a></li>
 <li class="toctree-l1"><a class="reference internal" href="deploiement.html">3. Deployment</a></li>
 </ul>
 
@@ -208,7 +208,7 @@
       
       
       
-      <li><a href="_sources/installation.rst" target="_blank"
+      <li><a href="_sources/docker.rst" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Télécharger le fichier source"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -292,7 +292,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Installation</h1>
+    <h1>Docker</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -302,12 +302,10 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pre-requis">Pré-requis</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#etapes-d-installation">Étapes d’installation</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#etape-1-telecharger-le-code">Etape 1 : Télécharger le code</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#etape-2-installer-python-et-ouvrir-le-terminal-de-commande">Etape 2 ; Installer Python et ouvrir le terminal de commande</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#etape-3-creation-de-l-environnement-virtuel">Etape 3 : Création de l’environnement virtuel</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#etape-4-telecharger-les-packages-necessaires-au-bon-fonctionnement-du-programme">Etape 4 : Télécharger les packages nécessaires au bon fonctionnement du programme</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#qu-est-ce-que-docker-et-a-quoi-sert-il">Qu’est-ce que Docker et à quoi sert-il ?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#creer-une-image-docker-pour-executer-l-application-en-local">Créer une image Docker pour exécuter l’application en local</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#utiliser-une-image-existante-depuis-dockerhub-pour-executer-l-application-en-local">Utiliser une image existante depuis DockerHub pour exécuter l’application en local</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#resume">Résumé</a></li>
 </ul>
             </nav>
         </div>
@@ -319,71 +317,92 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section id="installation">
-<h1>Installation<a class="headerlink" href="#installation" title="Lien vers cette rubrique">#</a></h1>
-<p>Cette section explique comment installer l’application.</p>
-<section id="pre-requis">
-<h2>Pré-requis<a class="headerlink" href="#pre-requis" title="Lien vers cette rubrique">#</a></h2>
+  <section id="docker">
+<h1>Docker<a class="headerlink" href="#docker" title="Lien vers cette rubrique">#</a></h1>
+<section id="qu-est-ce-que-docker-et-a-quoi-sert-il">
+<h2>Qu’est-ce que Docker et à quoi sert-il ?<a class="headerlink" href="#qu-est-ce-que-docker-et-a-quoi-sert-il" title="Lien vers cette rubrique">#</a></h2>
+<p>Docker est un outil permettant de créer, déployer et exécuter des applications dans des « conteneurs ». Un conteneur est une sorte d’enveloppe virtuelle qui regroupe tout ce dont une application a besoin pour fonctionner (code, bibliothèques, dépendances, etc.). Cela permet de s’assurer que l’application fonctionne de la même manière, que ce soit sur votre machine locale, sur un serveur ou dans le cloud.</p>
+<p>Les principaux avantages de Docker sont :</p>
+<ol class="arabic simple">
+<li><p><strong>Portabilité</strong> : Une application Dockerisée peut être exécutée sur n’importe quel système qui prend en charge Docker, sans avoir à se soucier des différences de configuration.</p></li>
+<li><p><strong>Isolation</strong> : Chaque conteneur fonctionne de manière indépendante des autres, ce qui réduit les risques de conflits entre applications.</p></li>
+<li><p><strong>Efficacité</strong> : Contrairement aux machines virtuelles, les conteneurs utilisent les ressources de manière plus efficace, car ils partagent le noyau du système hôte.</p></li>
+</ol>
+</section>
+<section id="creer-une-image-docker-pour-executer-l-application-en-local">
+<h2>Créer une image Docker pour exécuter l’application en local<a class="headerlink" href="#creer-une-image-docker-pour-executer-l-application-en-local" title="Lien vers cette rubrique">#</a></h2>
+<ol class="arabic">
+<li><p><strong>Télécharger et installer Docker</strong> :</p>
+<p>Suivez les instructions de la documentation officielle pour installer Docker :
+<a class="reference external" href="https://docs.docker.com/get-started/get-docker/">Docker Installation</a>.</p>
+</li>
+<li><p><strong>Naviguer dans le répertoire du projet</strong> :</p>
+<p>Ouvrez un terminal et exécutez la commande suivante pour vous rendre dans le dossier du projet :</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span><span class="nb">cd</span><span class="w"> </span>/home/magali/OpenClassrooms/Formation/Projet_13
+</pre></div>
+</div>
+</li>
+<li><p><strong>Assurez-vous que l’environnement virtuel (.venv) a été préalablement créé</strong> :</p>
+<p>Avant de continuer, vérifiez que l’environnement virtuel a été configuré (voir la section Installation).</p>
+</li>
+<li><p><strong>Construire l’image Docker</strong> :</p>
+<p>Utilisez la commande suivante pour créer une image Docker. Remplacez <cite>&lt;nom-image&gt;</cite> par le nom que vous souhaitez donner à votre image :</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>docker<span class="w"> </span>build<span class="w"> </span>-t<span class="w"> </span>&lt;nom-image&gt;<span class="w"> </span>.
+</pre></div>
+</div>
+</li>
+<li><p><strong>Lancer l’application avec Docker</strong> :</p>
+<p>Après avoir créé l’image, utilisez cette commande pour exécuter l’application. Remplacez <cite>&lt;nom-image&gt;</cite> par le nom de l’image que vous avez construite :</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>docker<span class="w"> </span>run<span class="w"> </span>--rm<span class="w"> </span>-p<span class="w"> </span><span class="m">8000</span>:8000<span class="w"> </span>&lt;nom-image&gt;
+</pre></div>
+</div>
+<p>Cette commande :</p>
 <ul class="simple">
-<li><p>Python 3.12</p></li>
-<li><p>pip</p></li>
+<li><p>Exécute l’application en utilisant l’image Docker.</p></li>
+<li><p>Ouvre le port 8000 de votre machine pour que l’application soit accessible.</p></li>
 </ul>
+</li>
+<li><p><strong>Accéder à l’application</strong> :</p>
+<p>Une fois l’application lancée, vous pouvez y accéder en ouvrant un navigateur web et en vous rendant à l’adresse suivante :
+<cite>http://127.0.0.1:8000/</cite>.</p>
+</li>
+</ol>
 </section>
-<section id="etapes-d-installation">
-<h2>Étapes d’installation<a class="headerlink" href="#etapes-d-installation" title="Lien vers cette rubrique">#</a></h2>
+<section id="utiliser-une-image-existante-depuis-dockerhub-pour-executer-l-application-en-local">
+<h2>Utiliser une image existante depuis DockerHub pour exécuter l’application en local<a class="headerlink" href="#utiliser-une-image-existante-depuis-dockerhub-pour-executer-l-application-en-local" title="Lien vers cette rubrique">#</a></h2>
+<ol class="arabic">
+<li><p><strong>Télécharger et installer Docker</strong> :</p>
+<p>Suivez les instructions de la documentation officielle pour installer Docker :
+<a class="reference external" href="https://docs.docker.com/get-started/get-docker/">Docker Installation</a>.</p>
+</li>
+<li><p><strong>Accéder au dépôt DockerHub</strong> :</p>
+<p>Allez sur le dépôt DockerHub à l’adresse suivante :
+<cite>mcourte/my-app</cite>.
+Ce dépôt contient des images pré-construites de l’application.</p>
+</li>
+<li><p><strong>Choisir une version (tag)</strong> :</p>
+<p>Copiez le tag de la version que vous souhaitez utiliser. Il est recommandé de choisir la version la plus récente.</p>
+</li>
+<li><p><strong>Lancer l’application depuis DockerHub</strong> :</p>
+<p>Utilisez la commande suivante pour exécuter l’application directement depuis DockerHub. Remplacez <cite>&lt;tag&gt;</cite> par le tag que vous avez copié à l’étape précédente :</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>docker<span class="w"> </span>run<span class="w"> </span>--rm<span class="w"> </span>-p<span class="w"> </span><span class="m">8000</span>:8000<span class="w"> </span>mcourte/my-app:&lt;tag&gt;
+</pre></div>
+</div>
+</li>
+<li><p><strong>Accéder à l’application</strong> :</p>
+<p>Comme précédemment, ouvrez un navigateur et accédez à l’application à l’adresse
+<cite>http://127.0.0.1:8000/</cite>.</p>
+</li>
+</ol>
 </section>
-<section id="etape-1-telecharger-le-code">
-<h2>Etape 1 : Télécharger le code<a class="headerlink" href="#etape-1-telecharger-le-code" title="Lien vers cette rubrique">#</a></h2>
-<p>Vous pouvez cloner le dépôt git dans lequel se trouve l’ensemble du projet:
-Placer vous dans la dossier dans lequel vous souhaitez cloner le git et taper</p>
-<blockquote>
-<div><div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/mcourte/OC_Projet13.git
-</pre></div>
-</div>
-</div></blockquote>
-</section>
-<section id="etape-2-installer-python-et-ouvrir-le-terminal-de-commande">
-<h2>Etape 2 ; Installer Python et ouvrir le terminal de commande<a class="headerlink" href="#etape-2-installer-python-et-ouvrir-le-terminal-de-commande" title="Lien vers cette rubrique">#</a></h2>
-<p>Télécharger <a class="reference external" href="https://www.python.org/downloads/">Python</a> et <a class="reference external" href="https://fr.wikihow.com/installer-Python">installer-le</a>.</p>
-<p>Ouvrir le terminal de commande :
-Pour les utilisateurs de Windows : <a class="reference external" href="https://support.kaspersky.com/fr/common/windows/14637#block0">démarche à suivre</a>
-Pour les utilisateurs de Mac OS : <a class="reference external" href="https://support.apple.com/fr-fr/guide/terminal/apd5265185d-f365-44cb-8b09-71a064a42125/mac">démarche à suivre</a>
-Pour les utilisateurs de Linux : ouvrez directement le terminal de commande.</p>
-</section>
-<section id="etape-3-creation-de-l-environnement-virtuel">
-<h2>Etape 3 : Création de l’environnement virtuel<a class="headerlink" href="#etape-3-creation-de-l-environnement-virtuel" title="Lien vers cette rubrique">#</a></h2>
-<p>Se placer dans le dossier où l’on a extrait l’ensemble des documents grâce à la commande <code class="docutils literal notranslate"><span class="pre">cd</span></code>
-Exemple :</p>
-<blockquote>
-<div><div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span><span class="nb">cd</span><span class="w"> </span>home/magali/OpenClassrooms/Formation/Projet_13
-</pre></div>
-</div>
-</div></blockquote>
-<p>Dans le terminal de commande, executer la commande suivante :</p>
-<blockquote>
-<div><div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>python3<span class="w"> </span>-m<span class="w"> </span>venv<span class="w"> </span>venv
-</pre></div>
-</div>
-</div></blockquote>
-<dl>
-<dt>Activez l’environnement virtuel</dt><dd><div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span><span class="nb">source</span><span class="w"> </span>venv/bin/activate
-</pre></div>
-</div>
-</dd>
-<dt>Pour les utilisateurs de Windows, la commande est la suivante :</dt><dd><div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>venv<span class="se">\S</span>cripts<span class="se">\a</span>ctivate.bat
-</pre></div>
-</div>
-</dd>
-</dl>
-</section>
-<section id="etape-4-telecharger-les-packages-necessaires-au-bon-fonctionnement-du-programme">
-<h2>Etape 4 : Télécharger les packages nécessaires au bon fonctionnement du programme<a class="headerlink" href="#etape-4-telecharger-les-packages-necessaires-au-bon-fonctionnement-du-programme" title="Lien vers cette rubrique">#</a></h2>
-<dl>
-<dt>Installez ensuite les packages requis:</dt><dd><div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>pip<span class="w"> </span>install<span class="w"> </span>-r<span class="w"> </span>requirements.txt
-</pre></div>
-</div>
-</dd>
-</dl>
+<section id="resume">
+<h2>Résumé<a class="headerlink" href="#resume" title="Lien vers cette rubrique">#</a></h2>
+<ul class="simple">
+<li><p><strong>Docker image</strong> : Une image est une sorte de « photo » figée de votre application avec toutes ses dépendances.</p></li>
+<li><p><strong>docker build</strong> : Cette commande crée une image Docker à partir de votre projet local.</p></li>
+<li><p><strong>docker run</strong> : Cette commande exécute une image Docker. Vous pouvez soit exécuter une image que vous avez construite, soit en télécharger une déjà prête sur DockerHub.</p></li>
+</ul>
+<p>Docker permet donc de facilement tester et déployer des applications en local ou sur des serveurs, tout en garantissant que l’environnement d’exécution est identique partout.</p>
 </section>
 </section>
 
@@ -399,20 +418,20 @@ Exemple :</p>
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="index.html"
+       href="installation.html"
        title="page précédente">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">précédent</p>
-        <p class="prev-next-title">OC-Lettings-Site documentation</p>
+        <p class="prev-next-title">Installation</p>
       </div>
     </a>
     <a class="right-next"
-       href="docker.html"
+       href="deploiement.html"
        title="page suivante">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">suivant</p>
-        <p class="prev-next-title">Docker</p>
+        <p class="prev-next-title">3. Deployment</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -432,12 +451,10 @@ Exemple :</p>
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pre-requis">Pré-requis</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#etapes-d-installation">Étapes d’installation</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#etape-1-telecharger-le-code">Etape 1 : Télécharger le code</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#etape-2-installer-python-et-ouvrir-le-terminal-de-commande">Etape 2 ; Installer Python et ouvrir le terminal de commande</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#etape-3-creation-de-l-environnement-virtuel">Etape 3 : Création de l’environnement virtuel</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#etape-4-telecharger-les-packages-necessaires-au-bon-fonctionnement-du-programme">Etape 4 : Télécharger les packages nécessaires au bon fonctionnement du programme</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#qu-est-ce-que-docker-et-a-quoi-sert-il">Qu’est-ce que Docker et à quoi sert-il ?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#creer-une-image-docker-pour-executer-l-application-en-local">Créer une image Docker pour exécuter l’application en local</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#utiliser-une-image-existante-depuis-dockerhub-pour-executer-l-application-en-local">Utiliser une image existante depuis DockerHub pour exécuter l’application en local</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#resume">Résumé</a></li>
 </ul>
   </nav></div>
 
