@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Déploiement &#8212; Documentation OC-Lettings-Site 1</title>
+    <title>Contexte &#8212; Documentation OC-Lettings-Site 1</title>
   
   
   
@@ -41,10 +41,11 @@
     <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
     <script src="_static/translations.js?v=041d0952"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'deploiement';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'context';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Recherche" href="search.html" />
-    <link rel="prev" title="Docker" href="docker.html" />
+    <link rel="next" title="Installation" href="installation.html" />
+    <link rel="prev" title="OC-Lettings-Site documentation" href="index.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="fr"/>
   </head>
@@ -150,10 +151,10 @@
     <div class="bd-toc-item navbar-nav active">
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">Sommaire</span></p>
 <ul class="current nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="context.html">Contexte</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Contexte</a></li>
 <li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="docker.html">Docker</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Déploiement</a></li>
+<li class="toctree-l1"><a class="reference internal" href="deploiement.html">Déploiement</a></li>
 </ul>
 
     </div>
@@ -208,7 +209,7 @@
       
       
       
-      <li><a href="_sources/deploiement.rst" target="_blank"
+      <li><a href="_sources/context.rst" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Télécharger le fichier source"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -292,7 +293,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Déploiement</h1>
+    <h1>Contexte</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -302,13 +303,13 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#qu-est-ce-que-le-deploiement-et-circleci">Qu’est-ce que le déploiement et CircleCI ?</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#avantages-de-l-integration-continue-avec-circleci">Avantages de l’intégration continue avec CircleCI :</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#processus-de-deploiement-avec-circleci">Processus de déploiement avec CircleCI :</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#prerequis">1. Prérequis</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#principe">2. Principe</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#configuration-de-circleci">3. Configuration de CircleCI</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#configuration-de-render">8. Configuration de Render</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#specifications">1. Spécifications</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#description-du-projet">2. Description du projet</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#configuration-du-systeme">3. Configuration du système</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#packages-de-developpement">4. Packages de développement</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#package-de-tests">5. Package de tests</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#production-packages">1. Production packages</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#modeles-de-base-de-donnees">7. Modèles de Base de Données</a></li>
 </ul>
             </nav>
         </div>
@@ -320,92 +321,117 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section id="deploiement">
-<h1>Déploiement<a class="headerlink" href="#deploiement" title="Lien vers cette rubrique">#</a></h1>
-<section id="qu-est-ce-que-le-deploiement-et-circleci">
-<h2>Qu’est-ce que le déploiement et CircleCI ?<a class="headerlink" href="#qu-est-ce-que-le-deploiement-et-circleci" title="Lien vers cette rubrique">#</a></h2>
-<p>Le déploiement est le processus par lequel une application est mise en production, rendant son utilisation possible pour les utilisateurs finaux. CircleCI est un service d’intégration et de déploiement continus (CI/CD) qui automatise les processus de test et de déploiement d’applications. Il permet de s’assurer que le code est de haute qualité avant d’être déployé en production.</p>
-</section>
-<section id="avantages-de-l-integration-continue-avec-circleci">
-<h2>Avantages de l’intégration continue avec CircleCI :<a class="headerlink" href="#avantages-de-l-integration-continue-avec-circleci" title="Lien vers cette rubrique">#</a></h2>
+  <section id="contexte">
+<h1>Contexte<a class="headerlink" href="#contexte" title="Lien vers cette rubrique">#</a></h1>
+<section id="specifications">
+<h2>1. Spécifications<a class="headerlink" href="#specifications" title="Lien vers cette rubrique">#</a></h2>
 <ul class="simple">
-<li><p><strong>Automatisation</strong> : CircleCI automatise le processus de test et de déploiement, réduisant ainsi le risque d’erreurs humaines.</p></li>
-<li><p><strong>Rapidité</strong> : Les modifications apportées au code sont testées et déployées rapidement, ce qui permet une mise à jour continue des fonctionnalités et des corrections de bugs.</p></li>
-<li><p><strong>Qualité du code</strong> : CircleCI exécute des tests automatisés et des analyses de linting, garantissant que seul le code de qualité est déployé.</p></li>
+<li><p><a class="reference external" href="https://github.com/canofranck/P13_OC_-Lettings_FR/blob/main/specifications/Site_web_2_0_caractéristiques_et_améliorations.pdf">App specifications</a></p></li>
+<li><p><a class="reference external" href="https://github.com/canofranck/P13_OC_-Lettings_FR/blob/main/specifications/Configuration_Read_the_Docs.pdf">Doc specifications</a></p></li>
 </ul>
 </section>
-<section id="processus-de-deploiement-avec-circleci">
-<h2>Processus de déploiement avec CircleCI :<a class="headerlink" href="#processus-de-deploiement-avec-circleci" title="Lien vers cette rubrique">#</a></h2>
-<ol class="arabic simple">
-<li><p><strong>Configuration du projet</strong> : Après avoir cloné le projet et configuré un environnement virtuel, créez un nouveau projet sur CircleCI lié à votre dépôt GitHub.</p></li>
-<li><p><strong>Définition des variables d’environnement</strong> : Configurez des variables d’environnement nécessaires à l’application dans CircleCI, telles que ALLOWED_HOSTS, DEBUG, DOCKERHUB_PASSWORD, et autres clés secrètes.</p></li>
-<li><p><strong>Pipeline automatisé</strong> : Lorsque des mises à jour sont poussées sur la branche master, CircleCI déclenche automatiquement le pipeline qui exécute les tests et le linting du code.</p></li>
-<li><p><strong>Construction et déploiement</strong> : Si les tests réussissent, CircleCI construit une image Docker et la pousse sur DockerHub. Ensuite, il déploie l’application sur Render.</p></li>
-<li><p><strong>Surveillance et alertes</strong> : CircleCI peut être intégré avec des outils comme Sentry pour surveiller les erreurs et recevoir des alertes en temps réel.</p></li>
+<section id="description-du-projet">
+<h2>2. Description du projet<a class="headerlink" href="#description-du-projet" title="Lien vers cette rubrique">#</a></h2>
+<blockquote>
+<div><p>Refonte de l’architecture modulaire dans le <a class="reference external" href="https://github.com/NidalChateur/OC_P13_LETTINGS">GitHub repository</a></p>
+<blockquote>
+<div><ol class="arabic simple">
+<li><p>Résolution de diverses dettes techniques dans le projet.</p></li>
+<li><p><a class="reference external" href="https://hub.docker.com/repository/docker/mcourte/my-app/general">Dockersation</a></p></li>
+<li><p>Mise en place d’un pipeline CI/CD en utilisant <a class="reference external" href="https://app.circleci.com/pipelines/circleci/Y8j2gRnHZve8of2ZKg9fsg">CircleCI</a> et déploiement sur <a class="reference external" href="https://dashboard.render.com/">Render</a></p></li>
+<li><p>Surveillance de l’application et suivi des erreurs via <a class="reference external" href="https://sentry.io">Sentry</a></p></li>
+<li><p>Création de la documentation technique de l’application avec  <a class="reference external" href="https://about.readthedocs.com/">Read The Docs</a> et <a class="reference external" href="https://github.com/sphinx-doc/sphinx">Sphinx</a></p></li>
 </ol>
-<p>Le déploiement automatisé avec CircleCI permet d’améliorer l’efficacité, la rapidité et la qualité des mises à jour de l’application. En intégrant des tests automatisés et des vérifications de code, il contribue à maintenir une base de code robuste et fiable, tout en assurant une expérience utilisateur fluide et sans interruption.</p>
+</div></blockquote>
+</div></blockquote>
 </section>
-<section id="prerequis">
-<h2>1. Prérequis<a class="headerlink" href="#prerequis" title="Lien vers cette rubrique">#</a></h2>
-<p>Pour effectuer le déploiement et l’intégration continue de l’application, les comptes suivants sont nécessaires :</p>
+<section id="configuration-du-systeme">
+<h2>3. Configuration du système<a class="headerlink" href="#configuration-du-systeme" title="Lien vers cette rubrique">#</a></h2>
 <ul class="simple">
-<li><p>Compte GitHub</p></li>
-<li><p>Compte CircleCI (lié au compte GitHub)</p></li>
-<li><p>Compte Docker</p></li>
-<li><p>Compte Render</p></li>
-<li><p>Compte Sentry</p></li>
+<li><p>Linux Mint</p></li>
+<li><p>Visual Studio Code 1.93.1</p></li>
+<li><p>Python 3.12.0</p></li>
+<li><p>pip 24.2</p></li>
 </ul>
 </section>
-<section id="principe">
-<h2>2. Principe<a class="headerlink" href="#principe" title="Lien vers cette rubrique">#</a></h2>
-<p>Le déploiement de l’application est automatisé par le pipeline CircleCI. Lorsque des mises à jour sont poussées sur le dépôt GitHub, le pipeline déclenche l’exécution de la suite de tests et le linting du code pour toutes les branches du projet. Si des mises à jour sont effectuées sur la branche main, et uniquement si les tests et le linting réussissent.</p>
-<p>Workflow :
-- Construit une image Docker et la pousse sur DockerHub.
-- Si l’étape précédente réussit, déploie l’application sur Render.</p>
-</section>
-<section id="configuration-de-circleci">
-<h2>3. Configuration de CircleCI<a class="headerlink" href="#configuration-de-circleci" title="Lien vers cette rubrique">#</a></h2>
-<ol class="arabic simple">
-<li><p>Après avoir cloné le projet, configuré l’environnement virtuel local (voir section Développement local) et créé les comptes nécessaires, suivez ces étapes pour configurer un nouveau projet sur CircleCI :</p></li>
-<li><p>Connectez-vous à votre compte CircleCI.</p></li>
-<li><p>Allez sur « Projects » et sélectionnez « Set Up Project » pour le projet cloné depuis GitHub.</p></li>
-<li><p>Choisissez la branche main comme source pour le fichier .circleci/config.yml.</p></li>
-<li><p>Pour que le pipeline CircleCI fonctionne correctement, configurez les variables d’environnement suivantes (Paramètres du projet &gt; Variables d’environnement) :</p>
+<section id="packages-de-developpement">
+<h2>4. Packages de développement<a class="headerlink" href="#packages-de-developpement" title="Lien vers cette rubrique">#</a></h2>
+<p>Pendant le développement local, nous utilisons  <strong>.venv</strong></p>
 <ul class="simple">
-<li><p><strong>ALLOWED_HOSTS</strong> : Spécifiez les hôtes autorisés pour l’application (par exemple, localhost, your-domain.com).</p></li>
-<li><p><strong>DEBUG</strong> : Choisissez True (en local) ou False (en production).</p></li>
-<li><p><strong>DOCKERHUB_PASSWORD</strong> : Mot de passe du compte Docker.</p></li>
-<li><p><strong>DOCKERHUB_USERNAME</strong> : Nom d’utilisateur du compte Docker.</p></li>
-<li><p><strong>HOOK_RENDER</strong> : URL de l’API Render pour le déploiement automatique.</p></li>
-<li><p><strong>SECRET_KEY</strong> : Clé secrète de l’application Django (générée lors de la création du projet Django).</p></li>
-<li><p><strong>SENTRY_DSN</strong> : URL du projet Sentry pour le suivi des erreurs.</p></li>
+<li><dl class="simple">
+<dt>django 5.0.8</dt><dd><ul>
+<li><p><strong>SECRET_KEY</strong> : Django secret key</p></li>
+<li><p><strong>SENTRY_DSN</strong> : Sentry project URL</p></li>
+<li><p><strong>ALLOWED_HOSTS</strong> : enter allowed host</p></li>
+<li><p><strong>DEBUG</strong> : select True or False</p></li>
+<li><p><strong>DOCKERHUB_PASSWORD</strong> : Docker account password</p></li>
+<li><p><strong>DOCKERHUB_USERNAME</strong> : Docker account username</p></li>
+<li><p><strong>HOOK_RENDER</strong> (acquired from Render)</p></li>
 </ul>
+</dd>
+</dl>
 </li>
-<li><p>Ajout de tests et étapes supplémentaires : Vous pouvez personnaliser davantage le pipeline CircleCI en ajoutant des étapes de tests automatisés pour garantir la qualité du code avant le déploiement. Par exemple, vous pouvez ajouter des étapes pour :
-- Exécuter des tests unitaires avec pytest ou unittest.
-- Vérifier la qualité du code avec des outils comme flake8 pour le linting Python.
-- Mettre en cache les dépendances pour réduire le temps d’exécution.</p></li>
-<li><p>Gestion des erreurs : Utilisez des outils tels que Sentry pour capturer les erreurs en temps réel dans l’application, et CircleCI peut intégrer ces alertes dans le pipeline.</p></li>
-</ol>
-</section>
-<section id="configuration-de-render">
-<h2>8. Configuration de Render<a class="headerlink" href="#configuration-de-render" title="Lien vers cette rubrique">#</a></h2>
-<ol class="arabic simple">
-<li><p>Connectez-vous à votre compte Render.</p></li>
-<li><p>Créez un Web Service pour l’application en spécifiant le dépôt GitHub où le code est hébergé.</p></li>
-<li><p>Dans l’interface de Render, définissez les variables d’environnement requises pour votre application dans la section des paramètres du service Web :</p>
-<ul class="simple">
-<li><p><strong>ALLOWED_HOSTS</strong> : Saisissez les hôtes autorisés (comme your-domain.com ou localhost).</p></li>
-<li><p><strong>DEBUG</strong> : Choisissez True pour activer le mode debug ou False pour la production.</p></li>
-<li><p><strong>DOCKERHUB_PASSWORD</strong> : Mot de passe du compte Docker.</p></li>
-<li><p><strong>DOCKERHUB_USERNAME</strong> : Nom d’utilisateur du compte Docker.</p></li>
-<li><p><strong>SECRET_KEY</strong> : Clé secrète de Django pour votre application.</p></li>
-<li><p><strong>SENTRY_DSN</strong> : URL du projet Sentry pour le suivi des erreurs.</p></li>
 </ul>
-</li>
-<li><p>Hooks de déploiement : Configurez un webhook dans Render pour que CircleCI puisse déclencher automatiquement le déploiement une fois l’image Docker mise à jour sur DockerHub. Cela assure une continuité de l’intégration/déploiement en cas de succès des tests sur CircleCI.</p></li>
-</ol>
-<p>Surveillance et logs : Render offre également des options pour surveiller votre application déployée, accéder aux logs, et vérifier la santé du service en continu.</p>
+</section>
+<section id="package-de-tests">
+<h2>5. Package de tests<a class="headerlink" href="#package-de-tests" title="Lien vers cette rubrique">#</a></h2>
+<ul class="simple">
+<li><p>pytest 8.3.2</p></li>
+<li><p>pytest-cov 5.0.0</p></li>
+<li><p>pytest-django 4.8.0</p></li>
+<li><p>flake8 7.1.1</p></li>
+<li><p>flake8-html 0.4.3</p></li>
+</ul>
+<dl>
+<dt>Pour la couverture de test utilisez :</dt><dd><div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>pytest<span class="w"> </span>--cov<span class="o">=</span>.<span class="w"> </span>--cov-report<span class="o">=</span>html
+</pre></div>
+</div>
+</dd>
+</dl>
+</section>
+<section id="production-packages">
+<h2>1. Production packages<a class="headerlink" href="#production-packages" title="Lien vers cette rubrique">#</a></h2>
+<blockquote>
+<div><ul class="simple">
+<li><p>gunicorn 23.0.0</p></li>
+<li><p>whitenoise 6.7.0</p></li>
+<li><p>sentry-sdk 2.14.0</p></li>
+</ul>
+</div></blockquote>
+</section>
+<section id="modeles-de-base-de-donnees">
+<h2>7. Modèles de Base de Données<a class="headerlink" href="#modeles-de-base-de-donnees" title="Lien vers cette rubrique">#</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">class</span> <span class="pre">Address(models.Model):</span></span></dt>
+<dd><ul class="simple">
+<li><p>number = models.PositiveIntegerField(validators=[MaxValueValidator(9999)])</p></li>
+<li><p>street = models.CharField(max_length=64)</p></li>
+<li><p>city = models.CharField(max_length=64)</p></li>
+<li><p>state = models.CharField(max_length=2, validators=[MinLengthValidator(2)])</p></li>
+<li><p>zip_code = models.PositiveIntegerField(validators=[MaxValueValidator(99999)])</p></li>
+<li><p>country_iso_code = models.CharField(max_length=3, validators=[MinLengthValidator(3)])</p></li>
+</ul>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">class</span> <span class="pre">Letting(models.Model):</span></span></dt>
+<dd><ul class="simple">
+<li><p>title = models.CharField(max_length=256)</p></li>
+<li><p>address = models.OneToOneField(Address, on_delete=models.CASCADE)</p></li>
+</ul>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">class</span> <span class="pre">Profile(models.Model):</span></span></dt>
+<dd><ul class="simple">
+<li><p>user = models.OneToOneField(User, on_delete=models.CASCADE,related_name=”profiles_profile”)</p></li>
+<li><p>favorite_city = models.CharField(max_length=64, blank=True)</p></li>
+</ul>
+</dd></dl>
+
 </section>
 </section>
 
@@ -421,13 +447,22 @@ document.write(`
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="docker.html"
+       href="index.html"
        title="page précédente">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">précédent</p>
-        <p class="prev-next-title">Docker</p>
+        <p class="prev-next-title">OC-Lettings-Site documentation</p>
       </div>
+    </a>
+    <a class="right-next"
+       href="installation.html"
+       title="page suivante">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">suivant</p>
+        <p class="prev-next-title">Installation</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
     </a>
 </div>
                 </footer>
@@ -445,13 +480,13 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#qu-est-ce-que-le-deploiement-et-circleci">Qu’est-ce que le déploiement et CircleCI ?</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#avantages-de-l-integration-continue-avec-circleci">Avantages de l’intégration continue avec CircleCI :</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#processus-de-deploiement-avec-circleci">Processus de déploiement avec CircleCI :</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#prerequis">1. Prérequis</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#principe">2. Principe</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#configuration-de-circleci">3. Configuration de CircleCI</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#configuration-de-render">8. Configuration de Render</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#specifications">1. Spécifications</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#description-du-projet">2. Description du projet</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#configuration-du-systeme">3. Configuration du système</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#packages-de-developpement">4. Packages de développement</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#package-de-tests">5. Package de tests</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#production-packages">1. Production packages</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#modeles-de-base-de-donnees">7. Modèles de Base de Données</a></li>
 </ul>
   </nav></div>
 
