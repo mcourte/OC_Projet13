@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>3. Déploiement &#8212; Documentation OC-Lettings-Site 1</title>
+    <title>Déploiement &#8212; Documentation OC-Lettings-Site 1</title>
   
   
   
@@ -152,7 +152,7 @@
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="docker.html">Docker</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">3. Déploiement</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Déploiement</a></li>
 </ul>
 
     </div>
@@ -291,7 +291,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>3. Déploiement</h1>
+    <h1>Déploiement</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -301,10 +301,11 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#qu-est-ce-que-le-deploiement-et-circleci">Qu’est-ce que le déploiement et CircleCI ?</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#prerequis">1. Prérequis</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#resume">1. Résumé</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#configuration-de-circleci">2. Configuration de CircleCI</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#configuration-de-render">3. Configuration de Render</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#principe">2. Principe</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#configuration-de-circleci">3. Configuration de CircleCI</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#configuration-de-render">4. Configuration de Render</a></li>
 </ul>
             </nav>
         </div>
@@ -317,7 +318,22 @@ document.write(`
                 <article class="bd-article">
                   
   <section id="deploiement">
-<h1>3. Déploiement<a class="headerlink" href="#deploiement" title="Lien vers cette rubrique">#</a></h1>
+<h1>Déploiement<a class="headerlink" href="#deploiement" title="Lien vers cette rubrique">#</a></h1>
+<section id="qu-est-ce-que-le-deploiement-et-circleci">
+<h2>Qu’est-ce que le déploiement et CircleCI ?<a class="headerlink" href="#qu-est-ce-que-le-deploiement-et-circleci" title="Lien vers cette rubrique">#</a></h2>
+<p>Le déploiement est le processus par lequel une application est mise en production, rendant son utilisation possible pour les utilisateurs finaux. CircleCI est un service d’intégration et de déploiement continus (CI/CD) qui automatise les processus de test et de déploiement d’applications. Il permet de s’assurer que le code est de haute qualité avant d’être déployé en production.</p>
+<p>Avantages de l’intégration continue avec CircleCI :
+- Automatisation : CircleCI automatise le processus de test et de déploiement, réduisant ainsi le risque d’erreurs humaines.
+- Rapidité : Les modifications apportées au code sont testées et déployées rapidement, ce qui permet une mise à jour continue des fonctionnalités et des corrections de bugs.
+- Qualité du code : CircleCI exécute des tests automatisés et des analyses de linting, garantissant que seul le code de qualité est déployé.
+- Processus de déploiement avec CircleCI :
+- Configuration du projet : Après avoir cloné le projet et configuré un environnement virtuel, créez un nouveau projet sur CircleCI lié à votre dépôt GitHub.
+- Définition des variables d’environnement : Configurez des variables d’environnement nécessaires à l’application dans CircleCI, telles que ALLOWED_HOSTS, DEBUG, DOCKERHUB_PASSWORD, et autres clés secrètes.
+- Pipeline automatisé : Lorsque des mises à jour sont poussées sur la branche master, CircleCI déclenche automatiquement le pipeline qui exécute les tests et le linting du code.
+- Construction et déploiement : Si les tests réussissent, CircleCI construit une image Docker et la pousse sur DockerHub. Ensuite, il déploie l’application sur Render.
+- Surveillance et alertes : CircleCI peut être intégré avec des outils comme Sentry pour surveiller les erreurs et recevoir des alertes en temps réel.</p>
+<p>Le déploiement automatisé avec CircleCI permet d’améliorer l’efficacité, la rapidité et la qualité des mises à jour de l’application. En intégrant des tests automatisés et des vérifications de code, il contribue à maintenir une base de code robuste et fiable, tout en assurant une expérience utilisateur fluide et sans interruption.</p>
+</section>
 <section id="prerequis">
 <h2>1. Prérequis<a class="headerlink" href="#prerequis" title="Lien vers cette rubrique">#</a></h2>
 <p>Pour effectuer le déploiement et l’intégration continue de l’application, les comptes suivants sont nécessaires :</p>
@@ -329,14 +345,15 @@ document.write(`
 <li><p>Compte Sentry</p></li>
 </ul>
 </section>
-<section id="resume">
-<h2>1. Résumé<a class="headerlink" href="#resume" title="Lien vers cette rubrique">#</a></h2>
-<p>Le déploiement de l’application est automatisé par le pipeline CircleCI. Lorsque des mises à jour sont poussées sur le dépôt GitHub, le pipeline déclenche l’exécution de la suite de tests et le linting du code pour toutes les branches du projet. Si des mises à jour sont effectuées sur la branche master, et uniquement si les tests et le linting réussissent, le workflow :</p>
-<p>Construit une image Docker et la pousse sur DockerHub.
+<section id="principe">
+<h2>2. Principe<a class="headerlink" href="#principe" title="Lien vers cette rubrique">#</a></h2>
+<p>Le déploiement de l’application est automatisé par le pipeline CircleCI. Lorsque des mises à jour sont poussées sur le dépôt GitHub, le pipeline déclenche l’exécution de la suite de tests et le linting du code pour toutes les branches du projet. Si des mises à jour sont effectuées sur la branche main, et uniquement si les tests et le linting réussissent.
+Workflow :
+Construit une image Docker et la pousse sur DockerHub.
 Si et seulement si l’étape précédente réussit, déploie l’application sur Render.</p>
 </section>
 <section id="configuration-de-circleci">
-<h2>2. Configuration de CircleCI<a class="headerlink" href="#configuration-de-circleci" title="Lien vers cette rubrique">#</a></h2>
+<h2>3. Configuration de CircleCI<a class="headerlink" href="#configuration-de-circleci" title="Lien vers cette rubrique">#</a></h2>
 <ol class="arabic simple">
 <li><p>Après avoir cloné le projet, configuré l’environnement virtuel local (voir section Développement local) et créé les comptes nécessaires, suivez ces étapes pour configurer un nouveau projet sur CircleCI :</p></li>
 <li><p>Connectez-vous à votre compte CircleCI.</p></li>
@@ -362,7 +379,7 @@ Si et seulement si l’étape précédente réussit, déploie l’application su
 </ol>
 </section>
 <section id="configuration-de-render">
-<h2>3. Configuration de Render<a class="headerlink" href="#configuration-de-render" title="Lien vers cette rubrique">#</a></h2>
+<h2>4. Configuration de Render<a class="headerlink" href="#configuration-de-render" title="Lien vers cette rubrique">#</a></h2>
 <ol class="arabic simple">
 <li><p>Connectez-vous à votre compte Render.</p></li>
 <li><p>Créez un Web Service pour l’application en spécifiant le dépôt GitHub où le code est hébergé.</p></li>
@@ -417,10 +434,11 @@ Si et seulement si l’étape précédente réussit, déploie l’application su
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#qu-est-ce-que-le-deploiement-et-circleci">Qu’est-ce que le déploiement et CircleCI ?</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#prerequis">1. Prérequis</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#resume">1. Résumé</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#configuration-de-circleci">2. Configuration de CircleCI</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#configuration-de-render">3. Configuration de Render</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#principe">2. Principe</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#configuration-de-circleci">3. Configuration de CircleCI</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#configuration-de-render">4. Configuration de Render</a></li>
 </ul>
   </nav></div>
 
