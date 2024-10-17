@@ -20,7 +20,7 @@ jobs:
             . venv/bin/activate
             pip install -r requirements.txt
       - run:
-          name: Collecter les fichiers statiques
+          name: Collect static files
           command: |
             . venv/bin/activate
             python manage.py collectstatic --noinput
