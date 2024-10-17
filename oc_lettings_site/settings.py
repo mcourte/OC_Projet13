@@ -1,15 +1,29 @@
 import os
+import sys  # Ajout pour détecter les tests
 from dotenv import load_dotenv
 from pathlib import Path
 import sentry_sdk
 
 load_dotenv()
+
+# Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-SECRET_KEY = os.getenv('SECRET_KEY', "secret-key")
-DEBUG = os.getenv('DEBUG', 'False') == 'True'
-ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'oc-projet13-kqrq.onrender.com']
+# Quick-start development settings - unsuitable for production
+# See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
 
+# SECURITY WARNING: keep the secret key used in production secret!
+SECRET_KEY = os.getenv('SECRET_KEY', 'secret-key')
+
+# SECURITY WARNING: don't run with debug turned on in production!
+DEBUG = False
+ALLOWED_HOSTS = [
+    'localhost',
+    '127.0.0.1',
+    'oc-projet13-kqrq.onrender.com',
+]
+
+# Application definition
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -57,6 +71,7 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'oc_lettings_site.wsgi.application'
 
+# Database
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
@@ -64,6 +79,7 @@ DATABASES = {
     }
 }
 
+# Password validation
 AUTH_PASSWORD_VALIDATORS = [
     {'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator'},
     {'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator'},
@@ -71,26 +87,29 @@ AUTH_PASSWORD_VALIDATORS = [
     {'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator'},
 ]
 
+# Internationalization
 LANGUAGE_CODE = 'en-us'
 TIME_ZONE = 'UTC'
 USE_I18N = True
 USE_L10N = True
 USE_TZ = True
 
-# Static files settings
+# Static files (CSS, JavaScript, Images)
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
+STATICFILES_DIRS = [BASE_DIR / 'static']
 
-# WhiteNoise for static files
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+# Configuration pour les fichiers statiques pendant les tests
+if 'test' in sys.argv:
+    STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.StaticFilesStorage'
+else:
+    STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # Sentry configuration
-if os.getenv("SENTRY_DSN"):
-    sentry_sdk.init(
-        dsn=os.getenv("SENTRY_DSN"),
-        traces_sample_rate=1.0,
-        profiles_sample_rate=1.0,
-    )
+sentry_sdk.init(
+    dsn=os.environ.get("SENTRY_DSN"),
+    traces_sample_rate=1.0,
+    profiles_sample_rate=1.0,
+)
