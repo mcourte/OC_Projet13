@@ -14,6 +14,12 @@ RUN pip install --no-cache-dir --disable-pip-version-check -r requirements.txt -
 # Copier le reste de l'application dans le conteneur
 COPY . .
 
+# Créer un répertoire pour les fichiers statiques
+RUN mkdir -p /app/staticfiles
+
+# Donner les permissions d'écriture pour l'utilisateur sur le répertoire des fichiers statiques
+RUN chown -R appuser:appuser /app/staticfiles
+
 # Donner les permissions d'exécution au script start_render.sh
 RUN chmod +x start_render.sh
 
@@ -22,6 +28,9 @@ RUN useradd -m appuser
 
 # Passer à cet utilisateur pour l'exécution des commandes
 USER appuser
+
+# Exécuter collectstatic pour rassembler les fichiers statiques
+RUN python manage.py collectstatic --noinput
 
 # Exposer le port 8000 pour l'application Django
 EXPOSE 8000
