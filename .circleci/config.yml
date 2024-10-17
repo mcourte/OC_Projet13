@@ -7,7 +7,7 @@ orbs:
 jobs:
   build-and-test:
     docker:
-      - image: python:3.10-slim  # Image plus légère pour les tests
+      - image: python:3.10-slim  # Image légère pour les tests
     steps:
       - checkout
       - run:
@@ -32,11 +32,12 @@ jobs:
   build_docker_image:
     docker:
       - image: circleci/python:3.10
+    resource_class: large  # Utilise plus de ressources pour les builds Docker
     steps:
       - checkout
       - setup_remote_docker:
-          version: 20.10.11  # Mise à jour vers une version plus récente de Docker
-          docker_layer_caching: true  # Accélère les builds Docker avec du cache
+          version: 20.10.8  # Mise à jour vers une version stable de Docker
+          docker_layer_caching: true  # Active le cache pour accélérer les builds
       - run:
           name: Build Docker image
           command: docker build -t $DOCKERHUB_USERNAME/my-app:latest .
@@ -48,7 +49,7 @@ jobs:
 
   deploy:
     machine:
-      resource_class: large
+      resource_class: large  # Assure des ressources suffisantes pour le déploiement
     steps:
       - attach_workspace:
           at: ~/project
