@@ -1,28 +1,30 @@
-# Utilisation de l'image Python slim pour un conteneur plus léger
+# Utiliser l'image Python 3.10 slim
 FROM python:3.10-slim
 
 # Définir le répertoire de travail
 WORKDIR /app
 
-# Copier le fichier requirements.txt
+# Copier le fichier requirements.txt dans le conteneur
 COPY requirements.txt /app/
 
-# Installer les dépendances avec pip optimisé
-RUN pip install --upgrade pip==24.2 --progress-bar off \
-    && pip install --no-cache-dir --disable-pip-version-check -r requirements.txt --progress-bar off
+# Mettre à jour pip et installer les dépendances
+RUN pip install --upgrade pip==24.2 --progress-bar off
+RUN pip install --no-cache-dir --disable-pip-version-check -r requirements.txt --progress-bar off
 
-# Copier le reste de l'application
+# Copier le reste de l'application dans le conteneur
 COPY . .
 
-# Ajouter un utilisateur non-root pour exécuter l'application
+# Donner les permissions d'exécution au script start_render.sh
+RUN chmod +x start_render.sh
+
+# Créer un utilisateur non-root
 RUN useradd -m appuser
+
+# Passer à cet utilisateur pour l'exécution des commandes
 USER appuser
 
-# Donne les permissions d'exécution au script
-RUN chmod a+x start_render.sh
-
-# Exposer le port
+# Exposer le port 8000 pour l'application Django
 EXPOSE 8000
 
-# Commande de démarrage
+# Commande pour démarrer l'application
 CMD ["sh", "-c", "./start_render.sh && gunicorn --bind 0.0.0.0:8000 oc_lettings_site.wsgi:application"]
