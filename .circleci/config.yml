@@ -18,8 +18,8 @@ jobs:
       - persist_to_workspace:
           root: ~/project
           paths:
+            - .
 
-  
   build_docker_image:
     docker:
       - image: circleci/python:3.10
@@ -27,7 +27,7 @@ jobs:
     steps:
       - checkout
       - setup_remote_docker:
-          docker_layer_caching: true  # Utilise la mise en cache des couches Docker
+          docker_layer_caching: true  # Supprime la version, CircleCI utilisera la version compatible
       - run:
           name: Check DockerHub username
           command: |
@@ -74,5 +74,4 @@ workflows:
             - build_docker_image
           filters:
             branches:
-              only:
-                - main
+              only: main
