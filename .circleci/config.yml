@@ -36,8 +36,7 @@ jobs:
     steps:
       - checkout
       - setup_remote_docker:
-          version: 20.10.8  # Mise à jour vers une version stable de Docker
-          docker_layer_caching: true  # Active le cache pour accélérer les builds
+          docker_layer_caching: true  # Supprime la version, CircleCI utilisera la version compatible
       - run:
           name: Build Docker image
           command: docker build -t $DOCKERHUB_USERNAME/my-app:latest .
