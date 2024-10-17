@@ -38,6 +38,13 @@ jobs:
       - setup_remote_docker:
           docker_layer_caching: true  # Supprime la version, CircleCI utilisera la version compatible
       - run:
+          name: Check DockerHub username
+          command: |
+            if [ -z "$DOCKERHUB_USERNAME" ]; then
+              echo "Error: DOCKERHUB_USERNAME is not set"
+              exit 1
+            fi
+      - run:
           name: Build Docker image
           command: docker build -t $DOCKERHUB_USERNAME/my-app:latest .
       - run:
