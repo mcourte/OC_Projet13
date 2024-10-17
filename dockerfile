@@ -14,6 +14,9 @@ RUN pip install --no-cache-dir --disable-pip-version-check -r requirements.txt -
 # Copier le reste de l'application dans le conteneur
 COPY . .
 
+# Créer un utilisateur non-root
+RUN useradd -m appuser
+
 # Créer un répertoire pour les fichiers statiques
 RUN mkdir -p /app/staticfiles
 
@@ -22,9 +25,6 @@ RUN chown -R appuser:appuser /app/staticfiles
 
 # Donner les permissions d'exécution au script start_render.sh
 RUN chmod +x start_render.sh
-
-# Créer un utilisateur non-root
-RUN useradd -m appuser
 
 # Passer à cet utilisateur pour l'exécution des commandes
 USER appuser
