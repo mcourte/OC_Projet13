@@ -7,14 +7,28 @@ orbs:
 jobs:
   build-and-test:
     docker:
-      - image: cimg/python:3.10-slim
+      - image: python:3.10-slim  # Image légère pour les tests
     steps:
       - checkout
-      - python/install-packages:
-          pkg-manager: pip
+      - run:
+          name: Clear pip cache
+          command: pip cache purge
+      - run:
+          name: Installer les dépendances
+          command: |
+            python -m venv venv  # Crée un environnement virtuel Python
+            . venv/bin/activate
+            pip install -r requirements.txt
+      - run:
+          name: Collecter les fichiers statiques
+          command: |
+            . venv/bin/activate
+            python manage.py collectstatic --noinput
       - run:
           name: Run tests
-          command: python -m pytest
+          command: |
+            . venv/bin/activate
+            python -m pytest
       - persist_to_workspace:
           root: ~/project
           paths:
@@ -27,7 +41,7 @@ jobs:
     steps:
       - checkout
       - setup_remote_docker:
-          docker_layer_caching: true  # Supprime la version, CircleCI utilisera la version compatible
+          docker_layer_caching: true  # Utilise la mise en cache des couches Docker
       - run:
           name: Check DockerHub username
           command: |
@@ -74,4 +88,5 @@ workflows:
             - build_docker_image
           filters:
             branches:
-              only: main
+              only:
+                - main
