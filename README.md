@@ -2,6 +2,11 @@
 # Projet 12 : Développez une architecture back-end sécurisée avec Python et SQL
 
 
+## Accéder au projet et le mettre en route
+Pour savoir comment utiliser l'application, liser la [Documentation ReadTheDocs](https://oc-projet13.readthedocs.io/fr/latest/)
+
+
+
 Améliorations du site **OC Lettings**  à partir du projet
 [Python-OC-Lettings-FR](https://github.com/OpenClassrooms-Student-Center/Python-OC-Lettings-FR) :
 
@@ -29,7 +34,3 @@ Améliorations du site **OC Lettings**  à partir du projet
 - **[Pipeline CircleCI de ce projet](https://app.circleci.com/pipelines/circleci/BETbtxagzTyRzvxKtbzjdS/8EfgRimj6nw7PPABmwB4Cq)**
 - **[Images Docker disponibles](https://hub.docker.com/r/mcourte/my-app)**
 - **[Application déployée sur Render](https://oc-projet13-kqrq.onrender.com)**
-
-
-# Documentation du projet 
-[Documentation ReadTheDocs](https://oc-projet13.readthedocs.io/fr/latest/)
