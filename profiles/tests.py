@@ -50,33 +50,35 @@ class ProfileViewTests(TestCase):
 
     def test_profile_detail_view(self):
         """
-        Tester la vue des détails d'un profil.
+        Tester la vue des détails d'un profil existant.
         """
         response = self.client.get(reverse('profiles:profile', args=['testuser']))
         self.assertEqual(response.status_code, 200)
         self.assertTemplateUsed(response, 'profiles/profile.html')
         self.assertContains(response, 'Test City')
 
-    @patch('profiles.views.Profile.objects.all')
-    @patch('profiles.views.sentry_log')
+    @patch('profiles.views.Profile.objects.all')  # Mock Profile.objects.all
+    @patch('profiles.views.sentry_log')  # Mock sentry_log pour vérifier les appels
     def test_no_profiles_found(self, mock_sentry_log, mock_all):
-        # Créer un objet de requête HTTP factice
+        """
+        Tester la vue d'index lorsque aucun profil n'est trouvé et vérifier les logs.
+        """
+        # Créer une requête factice
         request = self.factory.get('/profiles')
-        # Simuler un utilisateur (peut être une instance de User si nécessaire)
-        request.user = None
+        request.user = None  # Simuler un utilisateur non connecté
 
         # Simuler une liste vide de profils
         mock_all.return_value = []
 
-        # Exécuter la vue
+        # Exécuter la vue et vérifier l'exception Http404
         with self.assertRaises(Http404):
             index(request)
 
-        # Vérifier que la méthode sentry_log a été appelée avec les bons types et messages
+        # Vérifier que les logs sont correctement appelés
         mock_sentry_log.assert_has_calls([
             call(error_type='message',
-                 error_message="Requête d'index de profil initiée par l'utilisateur : None."
-                 " URL : /profiles, Méthode : GET, Adresse IP : 127.0.0.1"),
+                 error_message="Requête d'index de profil initiée par l'utilisateur : None. "
+                 "URL : /profiles, Méthode : GET, Adresse IP : 127.0.0.1"),
             call(error_type='message', error_message='Aucun profil trouvé.')
         ])
 
@@ -84,9 +86,15 @@ class ProfileViewTests(TestCase):
 class TestProfilesUrls(SimpleTestCase):
 
     def test_profiles_index_url_is_resolved(self):
+        """
+        Tester la résolution de l'URL pour l'index des profils.
+        """
         url = reverse('profiles:profiles_index')
         self.assertEqual(resolve(url).func, index)
 
     def test_profile_url_is_resolved(self):
+        """
+        Tester la résolution de l'URL pour un profil utilisateur.
+        """
         url = reverse('profiles:profile', args=['username'])
         self.assertEqual(resolve(url).func, profile)
