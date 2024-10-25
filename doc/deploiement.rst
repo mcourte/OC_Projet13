@@ -15,7 +15,7 @@ Processus de déploiement avec CircleCI :
 -----------------------------------------
 1. **Configuration du projet** : Après avoir cloné le projet et configuré un environnement virtuel, créez un nouveau projet sur CircleCI lié à votre dépôt GitHub.
 2. **Définition des variables d'environnement** : Configurez des variables d'environnement nécessaires à l'application dans CircleCI, telles que ALLOWED_HOSTS, DEBUG, DOCKERHUB_PASSWORD, et autres clés secrètes.
-3. **Pipeline automatisé** : Lorsque des mises à jour sont poussées sur la branche master, CircleCI déclenche automatiquement le pipeline qui exécute les tests et le linting du code.
+3. **Pipeline automatisé** : Lorsque des mises à jour sont poussées sur la branche main, CircleCI déclenche automatiquement le pipeline qui exécute les tests et le linting du code.
 4. **Construction et déploiement** : Si les tests réussissent, CircleCI construit une image Docker et la pousse sur DockerHub. Ensuite, il déploie l'application sur Render.
 5. **Surveillance et alertes** : CircleCI peut être intégré avec des outils comme Sentry pour surveiller les erreurs et recevoir des alertes en temps réel.
 
