@@ -81,7 +81,7 @@ class Error404ViewTests(TestCase):
 
 class SentryLogTests(TestCase):
 
-    @patch('logging.exception')
+    @patch('sentry_logger.logger.exception')
     def test_logging_exception(self, mock_logging_exception):
         # Appeler la fonction avec le type d'erreur "exception"
         sentry_log(error_type="exception", error_message="Test Exception Message")

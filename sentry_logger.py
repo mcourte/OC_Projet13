@@ -1,8 +1,8 @@
 import logging
 from sentry_sdk import capture_message
 
-# Configuration du logger
-logger = logging.getLogger(__name__)
+# Utilisation d'un logger global
+logger = logging.getLogger("sentry_logger")
 
 
 def sentry_log(error_type: str = "", error_message: str = ""):
