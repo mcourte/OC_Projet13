@@ -1,5 +1,5 @@
 
-# Projet 12 : Développez une architecture back-end sécurisée avec Python et SQL
+# Projet 13 : Mettez à l'échelle une application Django en utilisant une architecture modulaire
 
 
 ## Accéder au projet et le mettre en route
