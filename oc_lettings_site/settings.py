@@ -2,6 +2,9 @@ import os
 from dotenv import load_dotenv
 from pathlib import Path
 import sentry_sdk
+import logging
+from sentry_sdk.integrations.django import DjangoIntegration
+from sentry_sdk.integrations.logging import LoggingIntegration
 
 load_dotenv()
 
@@ -109,9 +112,17 @@ STORAGES = {
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-# Sentry configuration
+# Configuration du logging pour capturer tous les niveaux de logs
+sentry_logging = LoggingIntegration(
+    level=logging.INFO,  # Capture les logs de niveau INFO et supérieur comme breadcrumbs
+    event_level=logging.ERROR  # Envoie les erreurs et niveaux supérieurs comme événements à Sentry
+)
+
+# Configuration de Sentry
 sentry_sdk.init(
     dsn=os.environ.get("SENTRY_DSN"),
+    integrations=[DjangoIntegration(), sentry_logging],  # Ajout de l'intégration de logging
     traces_sample_rate=1.0,
     profiles_sample_rate=1.0,
+    send_default_pii=True,  # Pour capturer plus de détails si besoin
 )
