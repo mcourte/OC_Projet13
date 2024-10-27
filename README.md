@@ -31,6 +31,6 @@ Améliorations du site **OC Lettings**  à partir du projet
    4) Surveillance de l'application et suivi des erreurs via [Sentry](https://sentry.io/welcome/)
 
 ### Liens rapides :
-- **[Pipeline CircleCI de ce projet](https://app.circleci.com/pipelines/circleci/BETbtxagzTyRzvxKtbzjdS/8EfgRimj6nw7PPABmwB4Cq)**
+- **[Pipeline CircleCI de ce projet](https://app.circleci.com/pipelines/github/mcourte/OC_Projet13/29/workflows/dff5dc62-e0ee-4861-a082-aa8638f336fc)**
 - **[Images Docker disponibles](https://hub.docker.com/r/mcourte/my-app)**
 - **[Application déployée sur Render](https://oc-projet13-kqrq.onrender.com)**
