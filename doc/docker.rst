@@ -32,31 +32,6 @@ Créer une image Docker pour exécuter l'application en local
 
    Avant de continuer, vérifiez que l'environnement virtuel a été configuré (voir la section Installation).
 
-4. **Construire l'image Docker** :
-
-   Utilisez la commande suivante pour créer une image Docker. Remplacez `<nom-image>` par le nom que vous souhaitez donner à votre image :
-
-   .. code-block:: console
-
-      $ docker build -t <nom-image> .
-
-5. **Lancer l'application avec Docker** :
-
-   Après avoir créé l'image, utilisez cette commande pour exécuter l'application. Remplacez `<nom-image>` par le nom de l'image que vous avez construite :
-
-   .. code-block:: console
-
-      $ docker run --rm -p 8000:8000 <nom-image>
-
-   Cette commande :
-
-   - Exécute l'application en utilisant l'image Docker.
-   - Ouvre le port 8000 de votre machine pour que l'application soit accessible.
-
-6. **Accéder à l'application** :
-
-   Une fois l'application lancée, vous pouvez y accéder en ouvrant un navigateur web et en vous rendant à l'adresse suivante :  
-   `http://127.0.0.1:8000/`.
 
 Utiliser une image existante depuis DockerHub pour exécuter l'application en local
 -----------------------------------------------------------------------------------
@@ -82,7 +57,7 @@ Utiliser une image existante depuis DockerHub pour exécuter l'application en lo
 
    .. code-block:: console
 
-      $ docker run --rm -p 8000:8000 mcourte/my-app:<tag>
+      $ docker run --rm -p 8000:8000 mcourte/my-app
 
 5. **Accéder à l'application** :
 
